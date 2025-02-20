@@ -21,18 +21,17 @@ Please refer to the documentation for more information at
 https://documentation.botcity.dev/tutorials/python-automations/web/
 """
 
-
-# Import for the Web Bot
+import logging
 from botcity.web import WebBot, Browser, By
-
-# Import for integration with BotCity Maestro SDK
 from botcity.maestro import *
-
-# Disable errors if we are not connected to Maestro
+from src.utils.setup_logs import *
 BotMaestroSDK.RAISE_NOT_CONNECTED = False
 
 
 def main():
+    setup_logging()
+    logging.info("Início da execução do processo.")
+    logging.info("Processando dados...")
     # Runner passes the server url, the id of the task being executed,
     # the access token and the parameters that this task receives (when applicable).
     maestro = BotMaestroSDK.from_sys_args()
@@ -55,6 +54,7 @@ def main():
 
     # Opens the BotCity website.
     bot.browse("https://www.botcity.dev")
+    get_screenshots()
 
     # Implement here your logic...
     ...
