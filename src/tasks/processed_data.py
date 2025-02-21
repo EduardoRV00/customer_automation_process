@@ -13,6 +13,7 @@ def create_output_sheet():
     The file is named with the current date and time and saved as an .xlsx file.
     """
     try:
+        
         # Sheet headers
         headers = [
             "CNPJ", "RAZÃO SOCIAL", "NOME FANTASIA", "ENDEREÇO", "CEP",
@@ -39,6 +40,8 @@ def create_output_sheet():
         # Create empty dataframe with the headers
         df = pd.DataFrame(columns=headers)
 
+        logging.info("Criando planilha de saída")
+
         # Save dataframe to an excel file
         df.to_excel(file_path, index=False)
         
@@ -61,11 +64,4 @@ def create_output_sheet():
         wb.save(file_path)
     
     except Exception as e:
-        print(f"Erro ao capturar os screenshots: {e}")
-        
-        
-'''
-Dúvidas:
-Log
-return - file_path?
-'''
+        logging.info(f"Erro ao criar planilha de saída: {e}")
