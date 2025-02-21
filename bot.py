@@ -25,6 +25,7 @@ import logging
 from botcity.web import WebBot, Browser, By
 from botcity.maestro import *
 from src.utils.setup_logs import *
+from src.tasks.processed_data import *
 BotMaestroSDK.RAISE_NOT_CONNECTED = False
 
 
@@ -57,7 +58,7 @@ def main():
     get_screenshots()
 
     # Implement here your logic...
-    ...
+    create_output_sheet()
 
     # Wait 3 seconds before closing
     bot.wait(3000)
@@ -65,7 +66,7 @@ def main():
     # Finish and clean up the Web Browser
     # You MUST invoke the stop_browser to avoid
     # leaving instances of the webdriver open
-    bot.stop_browser()
+    # bot.stop_browser()
 
     # Uncomment to mark this task as finished on BotMaestro
     # maestro.finish_task(
