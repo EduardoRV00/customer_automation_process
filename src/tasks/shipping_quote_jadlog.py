@@ -25,7 +25,13 @@ altura = 30
 comprimento = 40
 
 def jadlog_quote():
-    
+    '''
+    Simulate a shipping quote on the Jadlog website using provided data.
+
+    This function opens the Jadlog quote simulation website, fills out the required fields
+    in the form with the given data, selects options from dropdowns, and clicks the 'Simular'
+    button to obtain a quote. The resulting quote value is then logged.
+    '''
     try: 
         # Uncomment to test log
         # setup_logging()
