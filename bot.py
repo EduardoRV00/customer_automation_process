@@ -53,8 +53,8 @@ def main():
     # bot.driver_path = "<path to your WebDriver binary>"
 
     # Opens the BotCity website.
-    bot.browse("https://www.botcity.dev")
-    get_screenshots()
+    # open_correios_site()
+    # get_screenshots()
 
     # Implement here your logic...
     ...
