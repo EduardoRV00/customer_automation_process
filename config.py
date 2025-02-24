@@ -11,3 +11,5 @@ CHROME_DRIVER = r'C:\customer_automation_process\src\utils\driver\chromedriver.e
 # LOG_PATH = 'C:\customer_automation_process\log'
 
 LOG_DIR = os.path.join(os.getcwd(), "Logs")
+
+URL_JADLOG = "https://www.jadlog.com.br/jadlog/simulacao"

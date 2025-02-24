@@ -26,6 +26,8 @@ from botcity.web import WebBot, Browser, By
 from botcity.maestro import *
 from src.utils.setup_logs import *
 from src.tasks.processed_data import *
+from src.tasks.shipping_quote_jadlog import *
+from openpyxl import load_workbook
 BotMaestroSDK.RAISE_NOT_CONNECTED = False
 
 
@@ -54,15 +56,22 @@ def main():
     bot.driver_path = CHROME_DRIVER
 
     # Opens the BotCity website.
-    bot.browse("https://www.botcity.dev")
-    get_screenshots()
+    # bot.browse("https://www.botcity.dev")
+    # get_screenshots()
 
     # Implement here your logic...
     
-    # Creates the output sheet and attributes path to the output_sheet variable
+    # Creates the output sheet and assigns the file path to the variable output_sheet
     output_sheet = create_output_sheet()
+    
+    # Check the output sheet information | Is currently running with placeholders
+    validar_informacoes(quote_data)
+    
+    # Performs quote on the jadlog website
+    jadlog_quote(output_sheet)
 
     # Wait 3 seconds before closing
+    logging.info('Finalizando execução do bot...')
     bot.wait(3000)
 
     # Finish and clean up the Web Browser
