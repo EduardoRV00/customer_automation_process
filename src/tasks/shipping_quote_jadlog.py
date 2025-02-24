@@ -2,6 +2,7 @@ from botcity.web import WebBot
 from botcity.web import By
 from selenium.webdriver.support.ui import Select, WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from openpyxl import load_workbook
 import logging
 import sys
 import os
@@ -25,23 +26,23 @@ altura = 30
 comprimento = 40
 
 # List of variables to check
-variaveis = [cep_origem, cep_destino, modalidade, peso, valor_mercadoria, valor_coleta, entrega, largura, altura, comprimento]
+quote_data = [cep_origem, cep_destino, modalidade, peso, valor_mercadoria, valor_coleta, entrega, largura, altura, comprimento]
 
-def validar_informacoes(variaveis):
+def validar_informacoes(quote_data):
     '''
     Check if there is any data missing to quote
     '''
     # Falta implementar logging que aponta qual variável está faltando
     
     logging.info('Verifica informações da planilha para realizar cotação')
-    for variavel in variaveis:
+    for variavel in quote_data:
         if variavel == 'N/A':
             logging.info('Ao menos uma das informações para realizar a cotação está faltando')
             return False
     logging.info('Informações da planilha validadas')
     return True
 
-def jadlog_quote():
+def jadlog_quote(output_sheet):
     '''
     Simulate a shipping quote on the Jadlog website using provided data.
 
@@ -49,7 +50,12 @@ def jadlog_quote():
     in the form with the given data, selects options from dropdowns, and clicks the 'Simular'
     button to obtain a quote. The resulting quote value is then logged.
     '''
-    try:        
+    try:
+        # Open output sheet
+        logging.info('Abre planilha de saída')
+        wb = load_workbook(output_sheet)
+        ws = wb.active
+        
         # Open the jadlog quote simulation website
         bot = WebBot()
         bot.driver_path = CHROME_DRIVER
@@ -107,18 +113,16 @@ def jadlog_quote():
             EC.presence_of_element_located((By.XPATH, '//*[@id="j_idt45_content"]/span'))
         )
         resultado_text = resultado.get_attribute('innerText')
-        
         logging.info(f'Valor da cotação: {resultado_text}')
+        valor_frete = float(resultado_text.replace('R$ ',''))
+
+        logging.info('Insere valor do frete na planilha de saída')
+        ws['N2'] = valor_frete
+        wb.save(output_sheet)
 
         bot.wait(3000)
         # return bot
     
     except Exception as e:
         logging.info(f"Erro ao preencher formulário de cotação: {e}")
-  
-# Uncomment to test log
-setup_logging()
-     
-if validar_informacoes(variaveis):
-    print('Todas as informações para a cotação estão disponíveis')
-    jadlog_quote()
+
