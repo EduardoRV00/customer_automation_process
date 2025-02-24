@@ -34,7 +34,7 @@ def jadlog_quote():
     '''
     try: 
         # Uncomment to test log
-        # setup_logging()
+        setup_logging()
         
         # Open the jadlog quote simulation website
         bot = WebBot()
@@ -101,4 +101,4 @@ def jadlog_quote():
     except Exception as e:
         logging.info(f"Erro ao preencher formulário de cotação: {e}")
        
-# jadlog_quote()
+jadlog_quote()
