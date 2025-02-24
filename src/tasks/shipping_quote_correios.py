@@ -2,11 +2,10 @@ from botcity.web import WebBot, By
 import logging
 from config import *
 
-def open_correios_site():
-  bot = WebBot()
+def open_correios_site(bot):
   bot.headless = False
   bot.browse(URL_CORREIOS)
-  bot.wait(3)
+  bot.wait(3000)
   logging.info("Abre site dos correios no navegador.")
 
 # DADOS PROVISORIOS PARA TESTE
