@@ -1,124 +1,74 @@
-from botcity.web import WebBot
-from botcity.web import By
-from selenium.webdriver.support.ui import Select, WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-import logging
-import sys
+import pandas as pd
+from datetime import datetime
+from openpyxl import load_workbook
+from openpyxl.styles import PatternFill
+from openpyxl.formatting.rule import CellIsRule
 import os
+import logging
 
-# Add the root folder to sys.path
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
+def create_output_sheet():
+    """
+    Creates an Excel sheet with predefined headers and saves it to a specified directory.
+    Applies conditional formatting to compare values in columns N and O, highlighting the cell with the smaller value.
+    The file is named with the current date and time and saved as an .xlsx file.
+    """
+    try:
+        
+        # Sheet headers
+        headers = [
+            "CNPJ", "RAZÃO SOCIAL", "NOME FANTASIA", "ENDEREÇO", "CEP",
+            "DESCRIÇÃO MATRIZ FILIAL", "TELEFONE + DDD", "E-MAIL", 
+            "VALOR DO PEDIDO", "DIMENSÕES CAIXA", "PESO DO PRODUTO",
+            "TIPO DE SERVIÇO JADLOG", "TIPO DE SERVIÇO CORREIOS",
+            "VALOR COTAÇÃO JADLOG", "VALOR COTAÇÃO CORREIOS",
+            "PRAZO DE ENTREGA CORREIOS", "Status"
+        ]
 
-from config import *
-from src.utils.setup_logs import *
+        # File name with current date and time
+        now = datetime.now().strftime("%d-%m-%Y_%H-%M-%S")
+        file_name = f"output_sheet_{now}.xlsx"
 
-# Placeholder data to execute jadlog_quote
-cep_origem = 14092465
-cep_destino = 14060510
-modalidade = 'JadLog Econômico'
-peso = 5
-valor_mercadoria = 500
-valor_coleta = 100
-entrega = 'Retira C.O.'
-largura = 50
-altura = 30
-comprimento = 40
+        # Path where the file will be saved
+        output_path = r"C:\customer_automation_process\src\utils\data\processed"
+        
+        # Make sure the path exists
+        os.makedirs(output_path, exist_ok=True)
 
-# List of variables to check
-variaveis = [cep_origem, cep_destino, modalidade, peso, valor_mercadoria, valor_coleta, entrega, largura, altura, comprimento]
+        # Full file path
+        file_path = os.path.join(output_path, file_name)
+        
+        # Create empty dataframe with the headers
+        df = pd.DataFrame(columns=headers)
 
-def validar_informacoes(variaveis):
-    '''
-    Check if there is any data missing to quote
-    '''
-    # Falta implementar logging que aponta qual variável está faltando
-    
-    logging.info('Verifica informações da planilha para realizar cotação')
-    for variavel in variaveis:
-        if variavel == 'N/A':
-            logging.info('Ao menos uma das informações para realizar a cotação está faltando')
-            return False
-    logging.info('Informações da planilha validadas')
-    return True
+        logging.info("Criando planilha de saída")
 
-def jadlog_quote():
-    '''
-    Simulate a shipping quote on the Jadlog website using provided data.
+        # Save dataframe to an excel file
+        df.to_excel(file_path, index=False)
+        
+        # Open the spreadsheet for editing
+        wb = load_workbook(file_path)
+        ws = wb.active
 
-    This function opens the Jadlog quote simulation website, fills out the required fields
-    in the form with the given data, selects options from dropdowns, and clicks the 'Simular'
-    button to obtain a quote. The resulting quote value is then logged.
-    '''
-    try:        
-        # Open the jadlog quote simulation website
-        bot = WebBot()
-        bot.driver_path = CHROME_DRIVER
-        bot.headless = False
-        logging.info("Abre site da Jadlog no navegador")
-        bot.browse(URL_JADLOG)
-        
-        # Fill the form with xlsx data
-        logging.info('Preenche dados na cotação Jadlog')
-        field_origem = bot.find_element("//input[@id='origem']", By.XPATH)
-        field_origem.send_keys(cep_origem)
-        
-        field_destino = bot.find_element("//input[@id='destino']", By.XPATH)
-        field_destino.send_keys(cep_destino)
-        
-        modalidade_dropdown = bot.find_element("//select[@id='modalidade']", By.XPATH)
-        select = Select(modalidade_dropdown)
-        select.select_by_visible_text(modalidade)  # Substitua pelo texto visível da opção desejada
-        
-        field_peso = bot.find_element("//input[@id='peso']", By.XPATH)
-        field_peso.clear()
-        field_peso.send_keys(peso)
-        
-        field_valor_merc = bot.find_element("//input[@id='valor_mercadoria']", By.XPATH)
-        field_valor_merc.clear()
-        field_valor_merc.send_keys(valor_mercadoria)
-        
-        field_valor_coleta = bot.find_element("//input[@id='valor_coleta']", By.XPATH)
-        field_valor_coleta.clear()
-        field_valor_coleta.send_keys(valor_coleta)
-        
-        entrega_dropdown = bot.find_element("//select[@id='entrega']", By.XPATH)
-        select = Select(entrega_dropdown)
-        select.select_by_visible_text(entrega)
-        
-        field_largura = bot.find_element("//input[@id='valLargura']", By.XPATH)
-        field_largura.clear()
-        field_largura.send_keys(largura)
-        
-        field_altura = bot.find_element("//input[@id='valAltura']", By.XPATH)
-        field_altura.clear()
-        field_altura.send_keys(altura)
-        
-        field_comprimento = bot.find_element("//input[@id='valComprimento']", By.XPATH)
-        field_comprimento.clear()
-        field_comprimento.send_keys(comprimento)
-        
-        # Click the 'Simular' button
-        logging.info('Realiza click em "Simular"')
-        simular_btn = bot.find_element("//input[@value='Simular']", By.XPATH)
-        simular_btn.click()
+        # Define the green fill for the conditional formatting
+        green_fill = PatternFill(start_color="00FF00", end_color="00FF00", fill_type="solid")
 
-        # Get the quote value
-        resultado = WebDriverWait(bot.driver, 10).until(
-            EC.presence_of_element_located((By.XPATH, '//*[@id="j_idt45_content"]/span'))
-        )
-        resultado_text = resultado.get_attribute('innerText')
+        # Apply conditional formatting to the range N2:N100
+        ws.conditional_formatting.add('N2:N1000', CellIsRule(
+            operator='lessThan', formula=['O2:O1000'], stopIfTrue=True, fill=green_fill))
         
-        logging.info(f'Valor da cotação: {resultado_text}')
-
-        bot.wait(3000)
-        # return bot
+        # Apply conditional formatting to the range O2:100
+        ws.conditional_formatting.add('O2:O20', CellIsRule(
+            operator='lessThan', formula=['N2:N20'], stopIfTrue=True, fill=green_fill))
+            
+        # Save changes in the spreadsheet
+        wb.save(file_path)
+        
+        # Assigns the full name (with path) of the output sheet to the output_sheet variable
+        # global output_sheet
+        output_sheet = file_path
+        logging.info(f'Planilha de saída criada com sucesso: {output_sheet}')
+        
+        return output_sheet
     
     except Exception as e:
-        logging.info(f"Erro ao preencher formulário de cotação: {e}")
-  
-# Uncomment to test log
-setup_logging()
-     
-if validar_informacoes(variaveis):
-    print('Todas as informações para a cotação estão disponíveis')
-    jadlog_quote()
+        logging.info(f"Erro ao criar planilha de saída: {e}")
