@@ -62,6 +62,13 @@ def create_output_sheet():
             
         # Save changes in the spreadsheet
         wb.save(file_path)
+        
+        # Assigns the full name (with path) of the output sheet to the output_sheet variable
+        # global output_sheet
+        output_sheet = file_path
+        logging.info(f'Planilha de saída criada com sucesso: {output_sheet}')
+        
+        return output_sheet
     
     except Exception as e:
         logging.info(f"Erro ao criar planilha de saída: {e}")
