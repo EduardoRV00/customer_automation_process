@@ -51,14 +51,16 @@ def main():
     # bot.browser = Browser.FIREFOX
 
     # Uncomment to set the WebDriver path
-    # bot.driver_path = "<path to your WebDriver binary>"
+    bot.driver_path = CHROME_DRIVER
 
     # Opens the BotCity website.
     bot.browse("https://www.botcity.dev")
     get_screenshots()
 
     # Implement here your logic...
-    create_output_sheet()
+    
+    # Creates the output sheet and attributes path to the output_sheet variable
+    output_sheet = create_output_sheet()
 
     # Wait 3 seconds before closing
     bot.wait(3000)
