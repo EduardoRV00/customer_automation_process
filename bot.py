@@ -54,11 +54,14 @@ def main():
     bot.driver_path = CHROME_DRIVER
 
     # Opens the BotCity website.
-    bot.browse("https://www.botcity.dev")
-    get_screenshots()
+    # bot.browse("https://www.botcity.dev")
+    # get_screenshots()
 
     # Implement here your logic...
-    create_output_sheet()
+    # create_output_sheet()
+    # print(f'output_sheet: {create_output_sheet()}')
+    output_sheet = create_output_sheet()
+    print(output_sheet)
 
     # Wait 3 seconds before closing
     bot.wait(3000)

@@ -24,6 +24,23 @@ largura = 50
 altura = 30
 comprimento = 40
 
+# List of variables to check
+variaveis = [cep_origem, cep_destino, modalidade, peso, valor_mercadoria, valor_coleta, entrega, largura, altura, comprimento]
+
+def validar_informacoes(variaveis):
+    '''
+    Check if there is any data missing to quote
+    '''
+    # Falta implementar logging que aponta qual variável está faltando
+    
+    logging.info('Verifica informações da planilha para realizar cotação')
+    for variavel in variaveis:
+        if variavel == 'N/A':
+            logging.info('Ao menos uma das informações para realizar a cotação está faltando')
+            return False
+    logging.info('Informações da planilha validadas')
+    return True
+
 def jadlog_quote():
     '''
     Simulate a shipping quote on the Jadlog website using provided data.
@@ -32,19 +49,16 @@ def jadlog_quote():
     in the form with the given data, selects options from dropdowns, and clicks the 'Simular'
     button to obtain a quote. The resulting quote value is then logged.
     '''
-    try: 
-        # Uncomment to test log
-        setup_logging()
-        
+    try:        
         # Open the jadlog quote simulation website
         bot = WebBot()
         bot.driver_path = CHROME_DRIVER
         bot.headless = False
-        logging.info("Abre site dos correios no navegador.")
+        logging.info("Abre site da Jadlog no navegador")
         bot.browse(URL_JADLOG)
         
         # Fill the form with xlsx data
-        logging.info('Preencher dados na simulação Jadlog')
+        logging.info('Preenche dados na cotação Jadlog')
         field_origem = bot.find_element("//input[@id='origem']", By.XPATH)
         field_origem.send_keys(cep_origem)
         
@@ -84,7 +98,7 @@ def jadlog_quote():
         field_comprimento.send_keys(comprimento)
         
         # Click the 'Simular' button
-        logging.info('Realizar click em "Simular"')
+        logging.info('Realiza click em "Simular"')
         simular_btn = bot.find_element("//input[@value='Simular']", By.XPATH)
         simular_btn.click()
 
@@ -93,12 +107,18 @@ def jadlog_quote():
             EC.presence_of_element_located((By.XPATH, '//*[@id="j_idt45_content"]/span'))
         )
         resultado_text = resultado.get_attribute('innerText')
-        logging.info(f'Valor da simulação: {resultado_text}')
+        
+        logging.info(f'Valor da cotação: {resultado_text}')
 
         bot.wait(3000)
         # return bot
     
     except Exception as e:
         logging.info(f"Erro ao preencher formulário de cotação: {e}")
-       
-jadlog_quote()
+  
+# Uncomment to test log
+setup_logging()
+     
+if validar_informacoes(variaveis):
+    print('Todas as informações para a cotação estão disponíveis')
+    jadlog_quote()
