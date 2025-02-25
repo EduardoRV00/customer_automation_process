@@ -2,7 +2,7 @@ import os
 
 #Path to excel files
 EXCEL_RAW_PATH = r'C:\customer_automation_process\src\utils\data\raw\Planilha_de_Entrada_Grupos(Grupo03).csv'
-EXCEL_PROCESSED_PATH = ''
+EXCEL_PROCESSED_PATH = r'C:\customer_automation_process\src\utils\data\processed\output_sheet_25-02-2025_00-07-18.xlsx'
 
 #Path to chromeDriver.exe
 CHROME_DRIVER = r'C:\customer_automation_process\src\utils\driver\chromedriver.exe'

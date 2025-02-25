@@ -26,6 +26,8 @@ from botcity.web import WebBot, Browser, By
 from botcity.maestro import *
 from src.utils.setup_logs import *
 from src.tasks.processed_data import *
+from src.services.api_client import *
+from src.tasks.fill_api_data_to_processed import *
 BotMaestroSDK.RAISE_NOT_CONNECTED = False
 
 
@@ -42,10 +44,10 @@ def main():
     print(f"Task ID is: {execution.task_id}")
     print(f"Task Parameters are: {execution.parameters}")
 
-    bot = WebBot()
+    #bot = WebBot()
 
     # Configure whether or not to run on headless mode
-    bot.headless = False
+    #bot.headless = False
 
     # Uncomment to change the default Browser to Firefox
     # bot.browser = Browser.FIREFOX
@@ -54,20 +56,23 @@ def main():
     # bot.driver_path = "<path to your WebDriver binary>"
 
     # Opens the BotCity website.
-    bot.browse("https://www.botcity.dev")
-    get_screenshots()
+    #bot.browse("https://www.botcity.dev")
+    #get_screenshots()
 
     # Implement here your logic...
-    create_output_sheet()
+    #create_output_sheet()
 
     # Wait 3 seconds before closing
-    bot.wait(3000)
-
+    #bot.wait(3000)
+    
     # Finish and clean up the Web Browser
     # You MUST invoke the stop_browser to avoid
     # leaving instances of the webdriver open
     # bot.stop_browser()
 
+
+    print(data_fill_processed())
+    
     # Uncomment to mark this task as finished on BotMaestro
     # maestro.finish_task(
     #     task_id=execution.task_id,
