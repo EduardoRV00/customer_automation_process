@@ -7,11 +7,11 @@ from src.tasks.processed_data import *
 
 def data_fill_processed(output_sheet):
     try:
-        logging.info("Lendo arquivo Excel de entrada...")
+        logging.info("Lendo arquivo Excel de entrada")
         entry_df = pd.read_excel(EXCEL_RAW_PATH)
         results = []
-        logging.info("Processando CNPJs e consultando API...")
-
+        
+        logging.info("Processando CNPJs e consultando API")
         for _, row in entry_df.iterrows():
             cnpj = str(row["CNPJ"])
             info = api_get(cnpj)
@@ -47,7 +47,6 @@ def data_fill_processed(output_sheet):
             "ddd_telefone_1": "TELEFONE + DDD",
             "email": "E-MAIL"
         })
-
         additional_columns = [
             "VALOR DO PEDIDO", "DIMENSÕES CAIXA", "PESO DO PRODUTO",
             "TIPO DE SERVIÇO JADLOG", "TIPO DE SERVIÇO CORREIOS",
@@ -65,13 +64,13 @@ def data_fill_processed(output_sheet):
         wb = load_workbook(output_sheet)
         ws = wb.active
 
-        # Garantir que há cabeçalhos
+        # Check if header it's available.
         if ws.max_column == 0:
             raise Exception("Erro: A planilha de saída não tem cabeçalhos definidos.")
 
         excel_headers = [ws.cell(row=1, column=col).value for col in range(1, ws.max_column + 1)]
-        excel_headers = [h for h in excel_headers if h]  # Remover valores None
-
+         
+        
         next_row = ws.max_row + 1
         logging.info("Preenchendo os respectivos dados no arquivo Excel")
 
