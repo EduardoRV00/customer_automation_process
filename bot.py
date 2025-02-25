@@ -73,6 +73,7 @@ def main():
     open_correios_site(bot)
     # PREENCHE FORMULARIO
     fill_correios_form(bot)
+    bot.stop_browser()
 
     
     # Check the output sheet information | Is currently running with placeholders
@@ -80,6 +81,7 @@ def main():
     
     # Performs quote on the jadlog website
     jadlog_quote(output_sheet)
+    bot.stop_browser()
 
     # Wait 3 seconds before closing
     logging.info('Finalizando execução do bot...')
