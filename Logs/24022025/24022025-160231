@@ -1,0 +1,20 @@
+2025-02-24 16:02:31,883 - INFO - Início da execução do processo.
+2025-02-24 16:02:31,883 - INFO - Processando dados...
+2025-02-24 16:02:31,907 - INFO - Planilha de entrada carregada com sucesso.
+2025-02-24 16:02:31,907 - INFO - Os campos PESO DO PRODUTO estão vazios
+2025-02-24 16:02:31,908 - INFO - Os campos VALOR DO PEDIDO estão vazios
+2025-02-24 16:02:31,908 - INFO - Os campos DIMENSÕES CAIXA (altura x largura x comprimento cm) estão vazios
+2025-02-24 16:02:31,910 - INFO - Criando planilha de saída
+2025-02-24 16:02:31,958 - INFO - Planilha de saída criada com sucesso: C:\customer_automation_process\src\utils\data\processed\output_sheet_24-02-2025_16-02-31.xlsx
+2025-02-24 16:02:38,523 - INFO - Abre site dos correios no navegador.
+2025-02-24 16:02:38,524 - INFO - Preenchendo formulário no site dos correios...
+2025-02-24 16:02:39,375 - INFO - Formulário de cotação preenchido.
+2025-02-24 16:02:39,375 - INFO - Verifica informações da planilha para realizar cotação
+2025-02-24 16:02:39,375 - INFO - Informações da planilha validadas
+2025-02-24 16:02:39,375 - INFO - Abre planilha de saída
+2025-02-24 16:02:39,396 - INFO - Abre site da Jadlog no navegador
+2025-02-24 16:02:41,807 - INFO - Preenche dados na cotação Jadlog
+2025-02-24 16:02:42,588 - INFO - Realiza click em "Simular"
+2025-02-24 16:02:43,213 - INFO - Valor da cotação: R$ 172.07
+2025-02-24 16:02:43,213 - INFO - Insere valor do frete na planilha de saída
+2025-02-24 16:02:46,223 - INFO - Finalizando execução do bot...

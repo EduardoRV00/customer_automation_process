@@ -1,0 +1,42 @@
+2025-02-24 16:11:00,437 - INFO - Início da execução do processo.
+2025-02-24 16:11:00,437 - INFO - Processando dados...
+2025-02-24 16:11:00,457 - INFO - Planilha de entrada carregada com sucesso.
+2025-02-24 16:11:00,457 - INFO - Os campos PESO DO PRODUTO estão vazios
+2025-02-24 16:11:00,459 - INFO - Os campos VALOR DO PEDIDO estão vazios
+2025-02-24 16:11:00,459 - INFO - Os campos DIMENSÕES CAIXA (altura x largura x comprimento cm) estão vazios
+2025-02-24 16:11:00,461 - INFO - Criando planilha de saída
+2025-02-24 16:11:00,507 - INFO - Planilha de saída criada com sucesso: C:\customer_automation_process\src\utils\data\processed\output_sheet_24-02-2025_16-11-00.xlsx
+2025-02-24 16:11:06,911 - INFO - Abre site dos correios no navegador.
+2025-02-24 16:11:06,912 - INFO - Preenchendo formulário no site dos correios...
+2025-02-24 16:11:07,756 - INFO - Formulário de cotação preenchido.
+2025-02-24 16:11:07,757 - INFO - Verifica informações da planilha para realizar cotação
+2025-02-24 16:11:07,757 - INFO - Informações da planilha validadas
+2025-02-24 16:11:07,757 - INFO - Abre planilha de saída
+2025-02-24 16:11:07,774 - INFO - Abre site da Jadlog no navegador
+2025-02-24 16:11:10,254 - INFO - Preenche dados na cotação Jadlog
+2025-02-24 16:11:11,036 - INFO - Realiza click em "Simular"
+2025-02-24 16:11:21,428 - INFO - Erro ao preencher formulário de cotação: Message: 
+Stacktrace:
+	GetHandleVerifier [0x00007FF726B56EE5+28773]
+	(No symbol) [0x00007FF726AC25D0]
+	(No symbol) [0x00007FF726958FAA]
+	(No symbol) [0x00007FF7269AF286]
+	(No symbol) [0x00007FF7269AF4BC]
+	(No symbol) [0x00007FF726A02A27]
+	(No symbol) [0x00007FF7269D728F]
+	(No symbol) [0x00007FF7269FF6F3]
+	(No symbol) [0x00007FF7269D7023]
+	(No symbol) [0x00007FF72699FF5E]
+	(No symbol) [0x00007FF7269A11E3]
+	GetHandleVerifier [0x00007FF726EA422D+3490733]
+	GetHandleVerifier [0x00007FF726EBBA13+3586963]
+	GetHandleVerifier [0x00007FF726EB144D+3544525]
+	GetHandleVerifier [0x00007FF726C1C9AA+838442]
+	(No symbol) [0x00007FF726ACD01F]
+	(No symbol) [0x00007FF726AC95E4]
+	(No symbol) [0x00007FF726AC9786]
+	(No symbol) [0x00007FF726AB8CB9]
+	BaseThreadInitThunk [0x00007FF89A797374+20]
+	RtlUserThreadStart [0x00007FF89B7BCC91+33]
+
+2025-02-24 16:11:21,429 - INFO - Finalizando execução do bot...
