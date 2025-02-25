@@ -1,0 +1,26 @@
+2025-02-24 17:40:25,859 - INFO - Início da execução do processo.
+2025-02-24 17:40:25,859 - INFO - Processando dados...
+2025-02-24 17:40:25,865 - INFO - Criando planilha de saída
+2025-02-24 17:40:25,913 - INFO - Planilha de saída criada com sucesso: C:\customer_automation_process\src\utils\data\processed\output_sheet_24-02-2025_17-40-25.xlsx
+2025-02-24 17:40:25,935 - INFO - Planilha de entrada carregada com sucesso.
+2025-02-24 17:40:25,935 - INFO - Preenchendo a planilha de saída com os dados da planilha de entrada...
+2025-02-24 17:40:25,951 - ERROR - Erro ao preencher a planilha de saída: 'DIMENSÕES CAIXA'
+2025-02-24 17:40:25,951 - INFO - Verifica campos vazios na planilha de entrada.
+2025-02-24 17:40:25,951 - INFO - Acessando planilha de saída para salvar status.
+2025-02-24 17:40:25,965 - INFO - Status salvo com sucesso na célula Q3
+2025-02-24 17:40:25,966 - INFO - Acessando planilha de saída para salvar status.
+2025-02-24 17:40:25,996 - INFO - Status salvo com sucesso na célula Q13
+2025-02-24 17:40:25,996 - INFO - Acessando planilha de saída para salvar status.
+2025-02-24 17:40:26,019 - INFO - Status salvo com sucesso na célula Q16
+2025-02-24 17:40:31,971 - INFO - Abre site dos correios no navegador.
+2025-02-24 17:40:31,971 - INFO - Preenchendo formulário no site dos correios...
+2025-02-24 17:40:32,836 - INFO - Formulário de cotação preenchido.
+2025-02-24 17:40:32,836 - INFO - Verifica informações da planilha para realizar cotação
+2025-02-24 17:40:32,836 - INFO - Informações da planilha validadas
+2025-02-24 17:40:32,836 - INFO - Abre planilha de saída
+2025-02-24 17:40:32,856 - INFO - Abre site da Jadlog no navegador
+2025-02-24 17:40:34,358 - INFO - Preenche dados na cotação Jadlog
+2025-02-24 17:40:36,048 - INFO - Realiza click em "Simular"
+2025-02-24 17:40:36,657 - INFO - Valor da cotação: R$ 172.07
+2025-02-24 17:40:36,657 - INFO - Insere valor do frete na planilha de saída
+2025-02-24 17:40:39,665 - INFO - Finalizando execução do bot...

@@ -26,8 +26,10 @@ from botcity.web import WebBot, Browser, By
 from botcity.maestro import *
 from src.utils.setup_logs import *
 from src.tasks.processed_data import *
-from src.services.api_client import *
-from src.tasks.fill_api_data_to_processed import *
+from src.tasks.shipping_quote_jadlog import *
+from src.tasks.shipping_quote_correios import *
+from src.utils.manipulate_spreadsheet import *
+from openpyxl import load_workbook
 BotMaestroSDK.RAISE_NOT_CONNECTED = False
 
 
@@ -53,18 +55,36 @@ def main():
     # bot.browser = Browser.FIREFOX
 
     # Uncomment to set the WebDriver path
-    # bot.driver_path = "<path to your WebDriver binary>"
+    bot.driver_path = CHROME_DRIVER
 
     # Opens the BotCity website.
-    #bot.browse("https://www.botcity.dev")
-    #get_screenshots()
+    # open_correios_site()
+    # get_screenshots()
 
     # Implement here your logic...
-    #create_output_sheet()
+    
+    
+    # Creates the output sheet and assigns the file path to the variable output_sheet
+    output_sheet = create_output_sheet()
+
+    process_spreadsheet(output_sheet)
+
+    # ABRE SITE CORREIOS
+    open_correios_site(bot)
+    # PREENCHE FORMULARIO
+    fill_correios_form(bot)
+
+    
+    # Check the output sheet information | Is currently running with placeholders
+    validar_informacoes(quote_data)
+    
+    # Performs quote on the jadlog website
+    jadlog_quote(output_sheet)
 
     # Wait 3 seconds before closing
-    #bot.wait(3000)
-    
+    logging.info('Finalizando execução do bot...')
+    bot.wait(3000)
+
     # Finish and clean up the Web Browser
     # You MUST invoke the stop_browser to avoid
     # leaving instances of the webdriver open
