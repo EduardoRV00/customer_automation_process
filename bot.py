@@ -76,7 +76,7 @@ def main():
 
     
     # Check the output sheet information | Is currently running with placeholders
-    validar_informacoes(quote_data)
+    validate_info(quote_data)
     
     # Performs quote on the jadlog website
     jadlog_quote(output_sheet)

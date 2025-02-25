@@ -28,7 +28,7 @@ comprimento = 40
 # List of variables to check
 quote_data = [cep_origem, cep_destino, modalidade, peso, valor_mercadoria, valor_coleta, entrega, largura, altura, comprimento]
 
-def validar_informacoes(quote_data):
+def validate_info(quote_data):
     '''
     Check if there is any data missing to quote
     '''
