@@ -1,0 +1,16 @@
+2025-02-24 15:27:30,248 - INFO - Início da execução do processo.
+2025-02-24 15:27:30,248 - INFO - Processando dados...
+2025-02-24 15:27:30,252 - INFO - Criando planilha de saída
+2025-02-24 15:27:30,302 - INFO - Planilha de saída criada com sucesso: C:\customer_automation_process\src\utils\data\processed\output_sheet_24-02-2025_15-27-30.xlsx
+2025-02-24 15:27:33,591 - INFO - Abre site dos correios no navegador.
+2025-02-24 15:27:33,591 - INFO - Preenchendo formulário no site dos correios...
+2025-02-24 15:27:33,592 - ERROR - Erro no preenchimento do formulário de cotação dos correios: 'NoneType' object has no attribute 'find_element'
+2025-02-24 15:27:33,592 - INFO - Verifica informações da planilha para realizar cotação
+2025-02-24 15:27:33,592 - INFO - Informações da planilha validadas
+2025-02-24 15:27:33,592 - INFO - Abre planilha de saída
+2025-02-24 15:27:36,009 - INFO - Abre site da Jadlog no navegador
+2025-02-24 15:27:38,666 - INFO - Preenche dados na cotação Jadlog
+2025-02-24 15:27:39,446 - INFO - Realiza click em "Simular"
+2025-02-24 15:27:40,066 - INFO - Valor da cotação: R$ 172.07
+2025-02-24 15:27:40,066 - INFO - Insere valor do frete na planilha de saída
+2025-02-24 15:27:43,078 - INFO - Finalizando execução do bot...

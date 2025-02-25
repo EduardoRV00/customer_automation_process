@@ -1,0 +1,26 @@
+2025-02-24 17:49:25,832 - INFO - Início da execução do processo.
+2025-02-24 17:49:25,833 - INFO - Processando dados...
+2025-02-24 17:49:25,837 - INFO - Criando planilha de saída
+2025-02-24 17:49:25,882 - INFO - Planilha de saída criada com sucesso: C:\customer_automation_process\src\utils\data\processed\output_sheet_24-02-2025_17-49-25.xlsx
+2025-02-24 17:49:25,902 - INFO - Planilha de entrada carregada com sucesso.
+2025-02-24 17:49:25,902 - INFO - Preenchendo a planilha de saída com os dados da planilha de entrada...
+2025-02-24 17:49:25,938 - INFO - Planilha de saída preenchida com sucesso!
+2025-02-24 17:49:25,938 - INFO - Verifica campos vazios na planilha de entrada.
+2025-02-24 17:49:25,939 - INFO - Acessando planilha de saída para salvar status.
+2025-02-24 17:49:25,977 - INFO - Status salvo com sucesso na célula Q3
+2025-02-24 17:49:25,978 - INFO - Acessando planilha de saída para salvar status.
+2025-02-24 17:49:26,010 - INFO - Status salvo com sucesso na célula Q13
+2025-02-24 17:49:26,011 - INFO - Acessando planilha de saída para salvar status.
+2025-02-24 17:49:26,040 - INFO - Status salvo com sucesso na célula Q16
+2025-02-24 17:49:32,360 - INFO - Abre site dos correios no navegador.
+2025-02-24 17:49:32,360 - INFO - Preenchendo formulário no site dos correios...
+2025-02-24 17:49:33,257 - INFO - Formulário de cotação preenchido.
+2025-02-24 17:49:33,258 - INFO - Verifica informações da planilha para realizar cotação
+2025-02-24 17:49:33,258 - INFO - Informações da planilha validadas
+2025-02-24 17:49:33,258 - INFO - Abre planilha de saída
+2025-02-24 17:49:33,278 - INFO - Abre site da Jadlog no navegador
+2025-02-24 17:49:34,801 - INFO - Preenche dados na cotação Jadlog
+2025-02-24 17:49:36,423 - INFO - Realiza click em "Simular"
+2025-02-24 17:49:37,033 - INFO - Valor da cotação: R$ 172.07
+2025-02-24 17:49:37,033 - INFO - Insere valor do frete na planilha de saída
+2025-02-24 17:49:40,052 - INFO - Finalizando execução do bot...

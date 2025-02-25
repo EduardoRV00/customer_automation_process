@@ -27,6 +27,8 @@ from botcity.maestro import *
 from src.utils.setup_logs import *
 from src.tasks.processed_data import *
 from src.tasks.shipping_quote_jadlog import *
+from src.tasks.shipping_quote_correios import *
+from src.utils.manipulate_spreadsheet import *
 from openpyxl import load_workbook
 BotMaestroSDK.RAISE_NOT_CONNECTED = False
 
@@ -56,13 +58,22 @@ def main():
     bot.driver_path = CHROME_DRIVER
 
     # Opens the BotCity website.
-    # bot.browse("https://www.botcity.dev")
+    # open_correios_site()
     # get_screenshots()
 
     # Implement here your logic...
     
+    
     # Creates the output sheet and assigns the file path to the variable output_sheet
     output_sheet = create_output_sheet()
+
+    process_spreadsheet(output_sheet)
+
+    # ABRE SITE CORREIOS
+    open_correios_site(bot)
+    # PREENCHE FORMULARIO
+    fill_correios_form(bot)
+
     
     # Check the output sheet information | Is currently running with placeholders
     validar_informacoes(quote_data)
