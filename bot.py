@@ -46,10 +46,10 @@ def main():
     print(f"Task ID is: {execution.task_id}")
     print(f"Task Parameters are: {execution.parameters}")
 
-    bot = WebBot()
+    #bot = WebBot()
 
     # Configure whether or not to run on headless mode
-    bot.headless = False
+    #bot.headless = False
 
     # Uncomment to change the default Browser to Firefox
     # bot.browser = Browser.FIREFOX
@@ -92,6 +92,9 @@ def main():
     # leaving instances of the webdriver open
     # bot.stop_browser()
 
+
+    print(data_fill_processed())
+    
     # Uncomment to mark this task as finished on BotMaestro
     # maestro.finish_task(
     #     task_id=execution.task_id,
