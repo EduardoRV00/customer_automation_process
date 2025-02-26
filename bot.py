@@ -62,27 +62,24 @@ def main():
     # get_screenshots()
 
     # Implement here your logic...
-    
-    
+     
     # Creates the output sheet and assigns the file path to the variable output_sheet
     output_sheet = create_output_sheet()
 
     process_spreadsheet(output_sheet)
 
-    # ABRE SITE CORREIOS
+    # # ABRE SITE CORREIOS
     open_correios_site(bot)
-    # PREENCHE FORMULARIO
+    # # PREENCHE FORMULARIO
     fill_correios_form(bot)
     bot.stop_browser()
-
     
-    # Check the output sheet information | Is currently running with placeholders
-    validate_info(quote_data)
-    
-    # Performs quote on the jadlog website
-    jadlog_quote(output_sheet)
+    # Opens Jadlog website
+    open_jadlog_site(bot)
+    # Performs quotes on the jadlog website
+    jadlog_quote(output_sheet, bot)
     bot.stop_browser()
-
+    
     # Wait 3 seconds before closing
     logging.info('Finalizando execução do bot...')
     bot.wait(3000)
