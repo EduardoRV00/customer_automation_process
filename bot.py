@@ -56,7 +56,7 @@ def main():
     # bot.browser = Browser.FIREFOX
 
     # Uncomment to set the WebDriver path
-    #bot.driver_path = CHROME_DRIVER
+    bot.driver_path = CHROME_DRIVER
 
     # Opens the BotCity website.
     # open_correios_site()
