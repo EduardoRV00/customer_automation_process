@@ -13,9 +13,8 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 from config import *
 from src.utils.setup_logs import *
 
-# Placeholder data to execute jadlog_quote
+# Static data to execute jadlog_quote
 cep_origem = 38182428
-cep_destino = 14060510
 valor_coleta = '50,00'
 
 def open_jadlog_site(bot):
@@ -41,12 +40,16 @@ def jadlog_quote(output_sheet, bot):
         df = pd.read_excel(output_sheet)
         
         # Fill the form with xlsx data
-        logging.info('Preencher dados na cotação Jadlog')
+        logging.info('Iniciar cotações no side da transportadora Jadlog')
               
         # Loop to travel dataframe cells
         for index, row in df.iterrows():
             
             # Checks empty cells and ignores quotation for the table line
+            if row['CEP'] == 'Não informado':
+                logging.info(f'Pulando cotação da linha {row.name + 2}. CEP do destino não declarado')
+                continue
+            
             if pd.isnull(row['VALOR DO PEDIDO']):
                 logging.info(f'Pulando cotação da linha {row.name + 2}. Valor do pedido não declarado')
                 continue
@@ -62,12 +65,11 @@ def jadlog_quote(output_sheet, bot):
             # Separates the dimensions of the box into 3 variables
             largura, altura, comprimento = map(int, row['DIMENSÕES CAIXA'].split(' x '))
             
-            # Fits the formatting of the cell with the weight value
-            peso = str(row['PESO DO PRODUTO']).replace('.',',')
-            
             # Fill in the form for quotation
             bot.find_element("//input[@id='origem']", By.XPATH).send_keys(cep_origem)
-            bot.find_element("//input[@id='destino']", By.XPATH).send_keys(cep_destino)
+            
+            bot.find_element("//input[@id='destino']", By.XPATH).clear()
+            bot.find_element("//input[@id='destino']", By.XPATH).send_keys(row['CEP'])
             
             modalidade_dropdown = bot.find_element("//select[@id='modalidade']", By.XPATH)
             select = Select(modalidade_dropdown)
@@ -77,7 +79,7 @@ def jadlog_quote(output_sheet, bot):
                 select.select_by_visible_text('JadLog Econômico')  
                        
             bot.find_element("//input[@id='peso']", By.XPATH).clear()
-            bot.find_element("//input[@id='peso']", By.XPATH).send_keys(peso)
+            bot.find_element("//input[@id='peso']", By.XPATH).send_keys(str(row['PESO DO PRODUTO']).replace('.',','))
 
             bot.find_element("//input[@id='valor_mercadoria']", By.XPATH).clear()
             bot.find_element("//input[@id='valor_mercadoria']", By.XPATH).send_keys(str(row['VALOR DO PEDIDO']).replace('.',','))
@@ -95,6 +97,7 @@ def jadlog_quote(output_sheet, bot):
             bot.find_element("//input[@id='valComprimento']", By.XPATH).send_keys(comprimento)
             
             # Click the 'Simular' button
+            bot.wait(1000)
             bot.find_element("//input[@value='Simular']", By.XPATH).click()
 
             # Get the quote value

@@ -26,11 +26,11 @@ from botcity.web import WebBot, Browser, By
 from botcity.maestro import *
 from src.utils.setup_logs import *
 from src.tasks.processed_data import *
+from src.tasks.fill_api_data_to_processed import *
 from src.tasks.shipping_quote_jadlog import *
 from src.tasks.shipping_quote_correios import *
 from src.utils.manipulate_spreadsheet import *
 from openpyxl import load_workbook
-from src.tasks.fill_api_data_to_processed import *
 BotMaestroSDK.RAISE_NOT_CONNECTED = False
 
 
@@ -58,54 +58,31 @@ def main():
     # Uncomment to set the WebDriver path
     bot.driver_path = CHROME_DRIVER
 
-
-    open_correios_site()
-    get_screenshots()
+    # Opens the BotCity website.
+    # open_correios_site()
+    # get_screenshots()
 
     # Implement here your logic...
-     
+    
+    
     # Creates the output sheet and assigns the file path to the variable output_sheet
     output_sheet = create_output_sheet()
 
-
     process_spreadsheet(output_sheet)
 
-<<<<<<< HEAD
     # # ABRE SITE CORREIOS
-    open_correios_site(bot)
+    # open_correios_site(bot)
     # # PREENCHE FORMULARIO
-    fill_correios_form(bot)
-=======
+    # fill_correios_form(bot)
+    # bot.stop_browser()
+    
     data_fill_processed(output_sheet)
     
-
-    
-    
-    # ABRE SITE CORREIOS
-    open_correios_site(bot)
-    # PREENCHE FORMULARIO
-    logging.info("Inicia preenchimento dos dados de cotação dos correios.")
-    process_shipping_quote_correios(bot, data)
-    logging.info("Finaliza preenchimento de cotação dos correios.")
-    # process_shipping_quotes(bot, output_sheet)
-    logging.info("Fecha site dos correios no navegador.")
->>>>>>> origin/development
-    bot.stop_browser()
-    
-<<<<<<< HEAD
-    # Opens Jadlog website
-    open_jadlog_site(bot)
-    # Performs quotes on the jadlog website
-    jadlog_quote(output_sheet, bot)
-=======
-    # Check the output sheet information | Is currently running with placeholders
-    #validar_informacoes(quote_data)
-    
     # Performs quote on the jadlog website
-    jadlog_quote(output_sheet)
->>>>>>> origin/development
+    open_jadlog_site(bot)
+    jadlog_quote(output_sheet, bot)
     bot.stop_browser()
-    
+
     # Wait 3 seconds before closing
     logging.info('Finalizando execução do bot...')
     bot.wait(3000)
@@ -113,11 +90,8 @@ def main():
     # Finish and clean up the Web Browser
     # You MUST invoke the stop_browser to avoid
     # leaving instances of the webdriver open
-    bot.stop_browser()
+    # bot.stop_browser()
 
-
-    
-    
     # Uncomment to mark this task as finished on BotMaestro
     # maestro.finish_task(
     #     task_id=execution.task_id,
