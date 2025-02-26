@@ -5,33 +5,10 @@ from config import EXCEL_RAW_PATH, EXCEL_PROCESSED_PATH
 from src.utils.setup_logs import *
 from src.utils.manipulate_spreadsheet import save_status_to_output
 
-def save_status_to_output_with_concat(output_sheet, row_index, message):
-    """
-    Salva uma mensagem de status em uma célula específica da planilha de saída,
-    concatenando-a com qualquer mensagem existente usando vírgula como separador
-    """
-    try:
-        logging.info(f"Acessando planilha de saída para salvar status.")
-        wb = load_workbook(output_sheet)
-        ws = wb.active
-
-        status_column = 17  # Ajuste conforme necessário
-        status_cell = ws.cell(row=row_index + 2, column=status_column)
-        
-        if status_cell.value and status_cell.value.strip() != "":
-            status_cell.value = f"{status_cell.value}, {message}"
-        else:
-            status_cell.value = message
-            
-        wb.save(output_sheet)
-        logging.info(f"Status salvo com sucesso na célula {status_cell.coordinate}")
-
-    except Exception as e:
-        logging.error(f"Erro ao salvar status na linha {row_index + 2}: {e}")
-
 def data_fill_processed(output_sheet):
     '''
     Fill data processed Excel file with API json.
+
     '''
     
     try:
@@ -68,6 +45,10 @@ def data_fill_processed(output_sheet):
                     "ddd_telefone_1": "Não informado",
                     "email": "N/A"
                 }
+                
+            
+            # Verify if the company it's active.
+            status = "" if info["descricao_situacao_cadastral"] == "ATIVA" else "Empresa inativa"
             
             # Fill data to sheet
             ws.cell(row=index + 2, column=column_mapping["RAZÃO SOCIAL"]).value = info["razao_social"]
@@ -78,9 +59,9 @@ def data_fill_processed(output_sheet):
             ws.cell(row=index + 2, column=column_mapping["TELEFONE + DDD"]).value = info["ddd_telefone_1"]
             ws.cell(row=index + 2, column=column_mapping["E-MAIL"]).value = info["email"]
             
-            # Verificar se a empresa está ativa e adicionar mensagem de status se não estiver
-            if info["descricao_situacao_cadastral"] != "ATIVA":
-                save_status_to_output_with_concat(output_sheet, index, "Empresa inativa")
+            
+            if status:
+                save_status_to_output(output_sheet, index, status)
             
             logging.info(f"Dados do CNPJ {cnpj} preenchidos com sucesso")
         
