@@ -1,4 +1,8 @@
 Logs/*
 __pycache__/
+<<<<<<< HEAD
+bot.py
+=======
 venv/
 bot
+>>>>>>> origin/development
