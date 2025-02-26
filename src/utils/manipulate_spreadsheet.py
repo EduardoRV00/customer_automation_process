@@ -59,6 +59,11 @@ def save_status_to_output(output_sheet, row_index, message):
 
     status_column = 17
     status_cell = ws.cell(row=row_index + 2, column=status_column)
+
+    #verifica se já existe um valor no campo status (nova msg adicionada no final)
+    current_status = status_cell.value if status_cell.value else ""
+    new_status = f"{current_status}, {message}".strip()
+
     status_cell.value = message
     wb.save(output_sheet)
     logging.info(f"Status salvo com sucesso na célula {status_cell.coordinate}")
