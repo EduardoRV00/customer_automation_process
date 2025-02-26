@@ -47,10 +47,10 @@ def main():
     print(f"Task ID is: {execution.task_id}")
     print(f"Task Parameters are: {execution.parameters}")
 
-    #bot = WebBot()
+    bot = WebBot()
 
     # Configure whether or not to run on headless mode
-    #bot.headless = False
+    bot.headless = False
 
     # Uncomment to change the default Browser to Firefox
     # bot.browser = Browser.FIREFOX
@@ -58,9 +58,9 @@ def main():
     # Uncomment to set the WebDriver path
     bot.driver_path = CHROME_DRIVER
 
-    # Opens the BotCity website.
-    # open_correios_site()
-    # get_screenshots()
+
+    open_correios_site()
+    get_screenshots()
 
     # Implement here your logic...
     
@@ -77,7 +77,7 @@ def main():
     
     
     # ABRE SITE CORREIOS
-    #open_correios_site(bot)
+    open_correios_site(bot)
     # PREENCHE FORMULARIO
     logging.info("Inicia preenchimento dos dados de cotação dos correios.")
     process_shipping_quote_correios(bot, data)
@@ -91,17 +91,17 @@ def main():
     #validar_informacoes(quote_data)
     
     # Performs quote on the jadlog website
-    #jadlog_quote(output_sheet)
-    #bot.stop_browser()
+    jadlog_quote(output_sheet)
+    bot.stop_browser()
 
     # Wait 3 seconds before closing
     logging.info('Finalizando execução do bot...')
-    #bot.wait(3000)
+    bot.wait(3000)
 
     # Finish and clean up the Web Browser
     # You MUST invoke the stop_browser to avoid
     # leaving instances of the webdriver open
-    # bot.stop_browser()
+    bot.stop_browser()
 
 
     
