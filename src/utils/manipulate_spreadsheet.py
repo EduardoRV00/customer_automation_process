@@ -72,6 +72,7 @@ def check_empty_fields(df, output_sheet):
   Verifica campos vazios na planilha
   """
   fields = ["CNPJ", "VALOR DO PEDIDO", "DIMENSÕES CAIXA (altura x largura x comprimento cm)", "PESO DO PRODUTO", "TIPO DE SERVIÇO JADLOG", "TIPO DE SERVIÇO CORREIOS"]
+  status_messages = []
 
   try:
     logging.info("Verifica campos vazios na planilha de entrada.")
@@ -81,9 +82,12 @@ def check_empty_fields(df, output_sheet):
         message = f"Os campos {', '.join(empty_fields)} estão vazios"
 
         save_status_to_output(output_sheet, index, message)
+        status_messages.append((index, message))
 
   except Exception as e:
     logging.error(f"Erro ao verificar campos vazios: {e}")
+
+  return status_messages
   
 
 def process_spreadsheet(output_sheet):
@@ -93,5 +97,5 @@ def process_spreadsheet(output_sheet):
   input_df = access_spreadsheet_input()
   if input_df is not None:
     fill_output_sheet_with_input_data(input_df, output_sheet)
-    check_empty_fields(input_df, output_sheet)
+    status_messages = check_empty_fields(input_df, output_sheet)
   return []
