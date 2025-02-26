@@ -72,7 +72,11 @@ def main():
     # ABRE SITE CORREIOS
     open_correios_site(bot)
     # PREENCHE FORMULARIO
-    fill_correios_form(bot)
+    logging.info("Inicia preenchimento dos dados de cotação dos correios.")
+    process_shipping_quote_correios(bot, data)
+    logging.info("Finaliza preenchimento de cotação dos correios.")
+    # process_shipping_quotes(bot, output_sheet)
+    logging.info("Fecha site dos correios no navegador.")
     bot.stop_browser()
 
     
