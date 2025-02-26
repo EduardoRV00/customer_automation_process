@@ -30,6 +30,7 @@ from src.tasks.shipping_quote_jadlog import *
 from src.tasks.shipping_quote_correios import *
 from src.utils.manipulate_spreadsheet import *
 from openpyxl import load_workbook
+from src.tasks.fill_api_data_to_processed import *
 BotMaestroSDK.RAISE_NOT_CONNECTED = False
 
 
@@ -55,7 +56,7 @@ def main():
     # bot.browser = Browser.FIREFOX
 
     # Uncomment to set the WebDriver path
-    bot.driver_path = CHROME_DRIVER
+    #bot.driver_path = CHROME_DRIVER
 
     # Opens the BotCity website.
     # open_correios_site()
@@ -67,25 +68,31 @@ def main():
     # Creates the output sheet and assigns the file path to the variable output_sheet
     output_sheet = create_output_sheet()
 
+
     process_spreadsheet(output_sheet)
 
+    data_fill_processed(output_sheet)
+    
+    save_status_to_output_with_concat()
+    
+    
     # ABRE SITE CORREIOS
-    open_correios_site(bot)
+    #open_correios_site(bot)
     # PREENCHE FORMULARIO
-    fill_correios_form(bot)
-    bot.stop_browser()
+    #fill_correios_form(bot)
+    #bot.stop_browser()
 
     
     # Check the output sheet information | Is currently running with placeholders
-    validar_informacoes(quote_data)
+    #validar_informacoes(quote_data)
     
     # Performs quote on the jadlog website
-    jadlog_quote(output_sheet)
-    bot.stop_browser()
+    #jadlog_quote(output_sheet)
+    #bot.stop_browser()
 
     # Wait 3 seconds before closing
     logging.info('Finalizando execução do bot...')
-    bot.wait(3000)
+    #bot.wait(3000)
 
     # Finish and clean up the Web Browser
     # You MUST invoke the stop_browser to avoid
@@ -93,7 +100,7 @@ def main():
     # bot.stop_browser()
 
 
-    print(data_fill_processed())
+    
     
     # Uncomment to mark this task as finished on BotMaestro
     # maestro.finish_task(
