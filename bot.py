@@ -30,6 +30,7 @@ from src.tasks.shipping_quote_jadlog import *
 from src.tasks.shipping_quote_correios import *
 from src.utils.manipulate_spreadsheet import *
 from openpyxl import load_workbook
+from src.tasks.fill_api_data_to_processed import *
 BotMaestroSDK.RAISE_NOT_CONNECTED = False
 
 
@@ -46,10 +47,10 @@ def main():
     print(f"Task ID is: {execution.task_id}")
     print(f"Task Parameters are: {execution.parameters}")
 
-    #bot = WebBot()
+    bot = WebBot()
 
     # Configure whether or not to run on headless mode
-    #bot.headless = False
+    bot.headless = False
 
     # Uncomment to change the default Browser to Firefox
     # bot.browser = Browser.FIREFOX
@@ -57,9 +58,9 @@ def main():
     # Uncomment to set the WebDriver path
     bot.driver_path = CHROME_DRIVER
 
-    # Opens the BotCity website.
-    # open_correios_site()
-    # get_screenshots()
+
+    open_correios_site()
+    get_screenshots()
 
     # Implement here your logic...
     
@@ -67,8 +68,14 @@ def main():
     # Creates the output sheet and assigns the file path to the variable output_sheet
     output_sheet = create_output_sheet()
 
+
     process_spreadsheet(output_sheet)
 
+    data_fill_processed(output_sheet)
+    
+
+    
+    
     # ABRE SITE CORREIOS
     open_correios_site(bot)
     # PREENCHE FORMULARIO
@@ -81,7 +88,7 @@ def main():
 
     
     # Check the output sheet information | Is currently running with placeholders
-    validar_informacoes(quote_data)
+    #validar_informacoes(quote_data)
     
     # Performs quote on the jadlog website
     jadlog_quote(output_sheet)
@@ -94,10 +101,10 @@ def main():
     # Finish and clean up the Web Browser
     # You MUST invoke the stop_browser to avoid
     # leaving instances of the webdriver open
-    # bot.stop_browser()
+    bot.stop_browser()
 
 
-    print(data_fill_processed())
+    
     
     # Uncomment to mark this task as finished on BotMaestro
     # maestro.finish_task(

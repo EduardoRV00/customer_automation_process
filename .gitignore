@@ -1,3 +1,4 @@
 Logs/*
 __pycache__/
-downloads.htm
+venv/
+bot
