@@ -59,6 +59,11 @@ def save_status_to_output(output_sheet, row_index, message):
 
     status_column = 17
     status_cell = ws.cell(row=row_index + 2, column=status_column)
+
+    #verifica se já existe um valor no campo status (nova msg adicionada no final)
+    current_status = status_cell.value if status_cell.value else ""
+    new_status = f"{current_status}, {message}".strip()
+
     status_cell.value = message
     wb.save(output_sheet)
     logging.info(f"Status salvo com sucesso na célula {status_cell.coordinate}")
@@ -72,6 +77,7 @@ def check_empty_fields(df, output_sheet):
   Verifica campos vazios na planilha
   """
   fields = ["CNPJ", "VALOR DO PEDIDO", "DIMENSÕES CAIXA (altura x largura x comprimento cm)", "PESO DO PRODUTO", "TIPO DE SERVIÇO JADLOG", "TIPO DE SERVIÇO CORREIOS"]
+  status_messages = []
 
   try:
     logging.info("Verifica campos vazios na planilha de entrada.")
@@ -81,9 +87,12 @@ def check_empty_fields(df, output_sheet):
         message = f"Os campos {', '.join(empty_fields)} estão vazios"
 
         save_status_to_output(output_sheet, index, message)
+        status_messages.append((index, message))
 
   except Exception as e:
     logging.error(f"Erro ao verificar campos vazios: {e}")
+
+  return status_messages
   
 
 def process_spreadsheet(output_sheet):
@@ -93,5 +102,5 @@ def process_spreadsheet(output_sheet):
   input_df = access_spreadsheet_input()
   if input_df is not None:
     fill_output_sheet_with_input_data(input_df, output_sheet)
-    check_empty_fields(input_df, output_sheet)
+    status_messages = check_empty_fields(input_df, output_sheet)
   return []
