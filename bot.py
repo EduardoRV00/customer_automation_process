@@ -30,6 +30,7 @@ from src.tasks.fill_api_data_to_processed import *
 from src.tasks.shipping_quote_jadlog import *
 from src.tasks.shipping_quote_correios import *
 from src.utils.manipulate_spreadsheet import *
+from src.tasks.fill_api_data_to_processed import *
 from openpyxl import load_workbook
 BotMaestroSDK.RAISE_NOT_CONNECTED = False
 
@@ -76,13 +77,20 @@ def main():
     # Fills in empty output sheet cells
     fill_data_b4_rpachallenge(output_sheet)
 
-    # # ABRE SITE CORREIOS
-    # open_correios_site(bot)
-    # # PREENCHE FORMULARIO
-    # fill_correios_form(bot)
-    # bot.stop_browser()
+    data_fill_processed(output_sheet)
+
+    open_correios_site(bot)
+    logging.info("Inicia busca de cotação dos Correios.")
+    processed_output_sheet_quote_correios(bot, output_sheet)
+    logging.info("Finaliza busca de cotação dos Correios.")
+    logging.info("Fecha site dos correios no navegador.")
+    bot.stop_browser()
+
     
-    # Opens jadlog website
+    # Check the output sheet information | Is currently running with placeholders
+    # validar_informacoes(quote_data)
+    
+    # Performs quote on the jadlog website
     open_jadlog_site(bot)
     # Performs quote on the jadlog website
     jadlog_quote(output_sheet, bot)
@@ -93,13 +101,17 @@ def main():
 
     # Wait 3 seconds before closing
     logging.info('Finalizando execução do bot...')
-    bot.wait(3000)
+    logging.info("Processo Finalizado.")
+    # bot.wait(3000)
 
     # Finish and clean up the Web Browser
     # You MUST invoke the stop_browser to avoid
     # leaving instances of the webdriver open
     # bot.stop_browser()
 
+    
+    # print(data_fill_processed())
+    
     # Uncomment to mark this task as finished on BotMaestro
     # maestro.finish_task(
     #     task_id=execution.task_id,
