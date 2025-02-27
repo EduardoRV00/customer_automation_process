@@ -6,7 +6,7 @@ from openpyxl.formatting.rule import CellIsRule
 import os
 import logging
 
-def create_output_sheet():
+def create_output_sheet(): 
     """
     Creates an Excel sheet with predefined headers and saves it to a specified directory.
     Applies conditional formatting to compare values in columns N and O, highlighting the cell with the smaller value.
@@ -72,3 +72,53 @@ def create_output_sheet():
     
     except Exception as e:
         logging.info(f"Erro ao criar planilha de saída: {e}")
+        
+def fill_data_b4_rpachallenge(output_sheet):
+    '''
+    Fills empty cells from 'NOME FANTASIA' and  'TELEFONE + DDD' columns
+    '''
+    try:
+        wb = load_workbook(output_sheet)
+        ws = wb.active
+        
+        # xlsx file reading
+        df = pd.read_excel(output_sheet)
+        
+        # Loop to travel dataframe cells and fill empty cells
+        for index, row in df.iterrows():
+            if pd.isnull(row['NOME FANTASIA']):
+                ws[f'C{row.name + 2}'] = 'N/A'
+            if pd.isnull(row['TELEFONE + DDD']):
+                ws[f'G{row.name + 2}'] = 'Não informado'            
+        
+        wb.save(output_sheet)
+        
+    except Exception as e:
+        logging.info(f"Erro ao preencher células em branco na planilha de saída: {e}")   
+        
+def fill_missing_values(output_sheet):
+    '''
+    Fills empty cells from the 'VALOR COTAÇÃO JADOLOG' and 'Status' columns
+    '''
+    try:
+        wb = load_workbook(output_sheet)
+        ws = wb.active
+        
+        # xlsx file reading
+        df = pd.read_excel(output_sheet)
+        
+        # Loop to travel dataframe cells and fill empty cells
+        for index, row in df.iterrows():
+            if pd.isnull(row['VALOR COTAÇÃO JADLOG']):
+                ws[f'N{row.name + 2}'] = 'N/A' 
+            if pd.isnull(row['Status']):
+                ws[f'Q{row.name + 2}'] = 'OK' 
+            # if pd.isnull(row['VALOR COTAÇÃO CORREIOS']):
+            #     ws[f'O{row.name + 2}'] = 'N/A' 
+            # if pd.isnull(row['PRAZO DE ENTREGA CORREIOS']):
+            #     ws[f'P{row.name + 2}'] = 'N/A'           
+
+        wb.save(output_sheet)
+        
+    except Exception as e:
+        logging.info(f"Erro ao preencher células em branco na planilha de saída: {e}")   
