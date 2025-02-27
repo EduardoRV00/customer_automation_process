@@ -77,8 +77,6 @@ def main():
     # Fills in empty output sheet cells
     fill_data_b4_rpachallenge(output_sheet)
 
-    data_fill_processed(output_sheet)
-
     open_correios_site(bot)
     logging.info("Inicia busca de cotação dos Correios.")
     processed_output_sheet_quote_correios(bot, output_sheet)
