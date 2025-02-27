@@ -75,6 +75,11 @@ def main():
     # Fills in empty output sheet cells
     fill_data_b4_rpachallenge(output_sheet)
 
+    #Fill Rpa challenge text boxes.
+    open_rpa_challenge_website(bot)
+    
+    fill_rpa_challenge(bot, output_sheet)
+
     open_correios_site(bot)
     logging.info("Inicia busca de cotação dos Correios.")
     processed_output_sheet_quote_correios(bot, output_sheet)
@@ -92,10 +97,7 @@ def main():
     jadlog_quote(output_sheet, bot)
     
     
-    #Fill Rpa challenge text boxes.
-    open_rpa_challenge_website(bot)
-    
-    fill_rpa_challenge(bot, output_sheet)
+
     
     
 
