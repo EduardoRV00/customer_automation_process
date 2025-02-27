@@ -69,6 +69,12 @@ def main():
     output_sheet = create_output_sheet()
 
     process_spreadsheet(output_sheet)
+    
+    # Fill output_sheet with API consultation data
+    data_fill_processed(output_sheet)
+    
+    # Fills in empty output sheet cells
+    fill_data_b4_rpachallenge(output_sheet)
 
     # # ABRE SITE CORREIOS
     # open_correios_site(bot)
@@ -76,12 +82,14 @@ def main():
     # fill_correios_form(bot)
     # bot.stop_browser()
     
-    data_fill_processed(output_sheet)
-    
-    # Performs quote on the jadlog website
+    # Opens jadlog website
     open_jadlog_site(bot)
+    # Performs quote on the jadlog website
     jadlog_quote(output_sheet, bot)
     bot.stop_browser()
+
+    # Fills in empty output sheet cells after quotes
+    fill_missing_values(output_sheet)
 
     # Wait 3 seconds before closing
     logging.info('Finalizando execução do bot...')
