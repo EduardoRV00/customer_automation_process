@@ -73,14 +73,10 @@ def main():
 
     data_fill_processed(output_sheet)
 
-    # ABRE SITE CORREIOS
     open_correios_site(bot)
-    # PREENCHE FORMULARIO
-    logging.info("Inicia preenchimento dos dados de cotação dos correios.")
-    # process_shipping_quote_correios(bot, data)
-    # logging.info("Finaliza preenchimento de cotação dos correios.")
-    read_output_sheet(bot, output_sheet)
-    # process_shipping_quotes(bot, output_sheet)
+    logging.info("Inicia busca de cotação dos Correios.")
+    processed_output_sheet_quote_correios(bot, output_sheet)
+    logging.info("Finaliza busca de cotação dos Correios.")
     logging.info("Fecha site dos correios no navegador.")
     bot.stop_browser()
 
@@ -89,22 +85,13 @@ def main():
     # validar_informacoes(quote_data)
     
     # Performs quote on the jadlog website
-    # jadlog_quote(output_sheet)
-    # bot.stop_browser()
-    # # ABRE SITE CORREIOS
-    # open_correios_site(bot)
-    # # PREENCHE FORMULARIO
-    # fill_correios_form(bot)
-    # bot.stop_browser()
-    
-    
-    # Performs quote on the jadlog website
     open_jadlog_site(bot)
     jadlog_quote(output_sheet, bot)
     bot.stop_browser()
 
     # Wait 3 seconds before closing
     logging.info('Finalizando execução do bot...')
+    logging.info("Processo Finalizado.")
     # bot.wait(3000)
 
     # Finish and clean up the Web Browser
