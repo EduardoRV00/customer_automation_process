@@ -29,6 +29,7 @@ from src.tasks.processed_data import *
 from src.tasks.shipping_quote_jadlog import *
 from src.tasks.shipping_quote_correios import *
 from src.utils.manipulate_spreadsheet import *
+from src.tasks.fill_api_data_to_processed import *
 from openpyxl import load_workbook
 BotMaestroSDK.RAISE_NOT_CONNECTED = False
 
@@ -46,7 +47,7 @@ def main():
     print(f"Task ID is: {execution.task_id}")
     print(f"Task Parameters are: {execution.parameters}")
 
-    #bot = WebBot()
+    bot = WebBot()
 
     # Configure whether or not to run on headless mode
     #bot.headless = False
@@ -69,35 +70,38 @@ def main():
 
     process_spreadsheet(output_sheet)
 
+    # data_fill_processed(output_sheet)
+
     # ABRE SITE CORREIOS
     open_correios_site(bot)
     # PREENCHE FORMULARIO
     logging.info("Inicia preenchimento dos dados de cotação dos correios.")
-    process_shipping_quote_correios(bot, data)
-    logging.info("Finaliza preenchimento de cotação dos correios.")
+    # process_shipping_quote_correios(bot, data)
+    # logging.info("Finaliza preenchimento de cotação dos correios.")
+    read_output_sheet(bot, output_sheet)
     # process_shipping_quotes(bot, output_sheet)
     logging.info("Fecha site dos correios no navegador.")
     bot.stop_browser()
 
     
     # Check the output sheet information | Is currently running with placeholders
-    validar_informacoes(quote_data)
+    # validar_informacoes(quote_data)
     
     # Performs quote on the jadlog website
-    jadlog_quote(output_sheet)
-    bot.stop_browser()
+    # jadlog_quote(output_sheet)
+    # bot.stop_browser()
 
     # Wait 3 seconds before closing
     logging.info('Finalizando execução do bot...')
-    bot.wait(3000)
+    # bot.wait(3000)
 
     # Finish and clean up the Web Browser
     # You MUST invoke the stop_browser to avoid
     # leaving instances of the webdriver open
     # bot.stop_browser()
 
-
-    print(data_fill_processed())
+    
+    # print(data_fill_processed())
     
     # Uncomment to mark this task as finished on BotMaestro
     # maestro.finish_task(
