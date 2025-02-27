@@ -26,6 +26,7 @@ from botcity.web import WebBot, Browser, By
 from botcity.maestro import *
 from src.utils.setup_logs import *
 from src.tasks.processed_data import *
+from src.tasks.fill_api_data_to_processed import *
 from src.tasks.shipping_quote_jadlog import *
 from src.tasks.shipping_quote_correios import *
 from src.utils.manipulate_spreadsheet import *
@@ -50,7 +51,7 @@ def main():
     bot = WebBot()
 
     # Configure whether or not to run on headless mode
-    #bot.headless = False
+    bot.headless = False
 
     # Uncomment to change the default Browser to Firefox
     # bot.browser = Browser.FIREFOX
@@ -70,7 +71,7 @@ def main():
 
     process_spreadsheet(output_sheet)
 
-    # data_fill_processed(output_sheet)
+    data_fill_processed(output_sheet)
 
     # ABRE SITE CORREIOS
     open_correios_site(bot)
@@ -90,6 +91,17 @@ def main():
     # Performs quote on the jadlog website
     # jadlog_quote(output_sheet)
     # bot.stop_browser()
+    # # ABRE SITE CORREIOS
+    # open_correios_site(bot)
+    # # PREENCHE FORMULARIO
+    # fill_correios_form(bot)
+    # bot.stop_browser()
+    
+    
+    # Performs quote on the jadlog website
+    open_jadlog_site(bot)
+    jadlog_quote(output_sheet, bot)
+    bot.stop_browser()
 
     # Wait 3 seconds before closing
     logging.info('Finalizando execução do bot...')
