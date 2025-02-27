@@ -32,6 +32,7 @@ from src.tasks.shipping_quote_correios import *
 from src.utils.manipulate_spreadsheet import *
 from src.tasks.fill_api_data_to_processed import *
 from openpyxl import load_workbook
+from src.tasks.rpa_challenge_data_fill import *
 BotMaestroSDK.RAISE_NOT_CONNECTED = False
 
 
@@ -52,9 +53,6 @@ def main():
 
     # Configure whether or not to run on headless mode
     bot.headless = False
-
-    # Uncomment to change the default Browser to Firefox
-    # bot.browser = Browser.FIREFOX
 
     # Uncomment to set the WebDriver path
     bot.driver_path = CHROME_DRIVER
@@ -92,7 +90,14 @@ def main():
     open_jadlog_site(bot)
     # Performs quote on the jadlog website
     jadlog_quote(output_sheet, bot)
-    bot.stop_browser()
+    
+    
+    #Fill Rpa challenge text boxes.
+    open_rpa_challenge_website(bot)
+    
+    fill_rpa_challenge(bot, output_sheet)
+    
+    
 
     # Fills in empty output sheet cells after quotes
     fill_missing_values(output_sheet)
@@ -105,7 +110,7 @@ def main():
     # Finish and clean up the Web Browser
     # You MUST invoke the stop_browser to avoid
     # leaving instances of the webdriver open
-    # bot.stop_browser()
+    bot.stop_browser()
 
     
     # print(data_fill_processed())
