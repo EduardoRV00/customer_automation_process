@@ -4,51 +4,21 @@ import logging
 from config import *
 from openpyxl import load_workbook
 from datetime import datetime, timedelta
-
-data = [
-    {
-        "origin_zip_code": '38182-428',
-        "destination_zip_code": '74013-020',
-        "type_service": 'PAC',
-        "dimension_height": 36,
-        "dimension_width": 28,
-        "dimension_length": 28,
-        "product_weight": 8
-    },
-    {
-        "origin_zip_code": '38182-428',
-        "destination_zip_code": '80610-240',
-        "type_service": 'SEDEX',
-        "dimension_height": 36,
-        "dimension_width": 28,
-        "dimension_length": 28,
-        "product_weight": 17
-    },
-    {
-        "origin_zip_code": '38182-428',
-        "destination_zip_code": '74020-170',
-        "type_service": 'PAC',
-        "dimension_height": 36,
-        "dimension_width": 28,
-        "dimension_length": 28,
-        "product_weight": 10
-    }
-]
+from src.utils.manipulate_spreadsheet import *
 
 
 def open_correios_site(bot):
   """
-  Abre site dos correios no navegador.
+  Open the post office website in the browser.
   """
   bot.headless = False
   bot.browse(URL_CORREIOS)
-  # bot.wait(3000)
   logging.info("Abre site dos correios no navegador.")
 
 
 def handle_delivery_time(delivery_text):
-  """
-  Extrai dias uteis (texto) e calcula prazo
+  """ 
+  Extract business days (text) and calculate deadline
   """
   delivery_working_days = re.search(r'(\d+)\s+dias\s+úteis', delivery_text)
   if not delivery_working_days:
@@ -62,71 +32,143 @@ def handle_delivery_time(delivery_text):
         if current_date.weekday() < 5:  #segunda - sexta (dias uteis)
             working_days -= 1
 
-  delivery_date = current_date.strftime("%d/%m/%Y")
-
-  return delivery_date
+  return current_date.strftime("%d/%m/%Y")
 
 
-def fill_correios_form(bot, data):
+def fill_correios_form(bot, dest_zip, service, height, width, length, weight, row, output_sheet):
+  """ 
+  Fill out the Correios shipping quote form and capture the quote values
+  """
   try:
-    # preenche campos de cep (oridem e estino)
-    bot.find_element(selector="cepOrigem", by=By.NAME).send_keys(data['origin_zip_code'])
-    bot.find_element(selector="cepDestino", by=By.NAME).send_keys(data['destination_zip_code'])
+    #fill length cannot be less than 13
+    if length < 13:
+       wb = load_workbook(output_sheet)
+       ws = wb.active
+       ws.cell(row=row, column=17, value="Erro ao realizar a cotação Correios")
+       ws.cell(row=row, column=15, value="N/A")
+       ws.cell(row=row, column=16, value="N/A")
+       wb.save(output_sheet)
+       return 
+       
+    origin_zip = 38182428
 
-    #seleciona campo de serviço ("PAC ou "SEDEX")
+    #fill in zip code fields (origin and destination)
+    bot.find_element(selector="cepOrigem", by=By.NAME).send_keys(origin_zip)
+    bot.find_element(selector="cepDestino", by=By.NAME).send_keys(dest_zip)
+
+    #select service field ("PAC or "SEDEX")
     bot.find_element(selector="servico", by=By.NAME).click()
-    if data["type_service"] == "PAC":
-      bot.find_element(selector=f"option[value='04510']", by=By.CSS_SELECTOR).click()
-    if data["type_service"] == "SEDEX":
-      bot.find_element(selector=f"option[value='04014']", by=By.CSS_SELECTOR).click()
-
-    #seleciona tipo de embalagem
+    if service == "PAC":
+      bot.find_element(selector="option[value='04510']", by=By.CSS_SELECTOR).click()
+    if service == "SEDEX":
+      bot.find_element(selector="option[value='04014']", by=By.CSS_SELECTOR).click()
+    
+    #select type of packaging
     bot.find_element(selector="option[value='outraEmbalagem1']", by=By.CSS_SELECTOR).click()
 
-    #preenche campos dimensões
-    bot.find_element(selector="Altura", by=By.NAME).send_keys(str(data['dimension_height']))
-    bot.find_element(selector="Largura", by=By.NAME).send_keys(str(data['dimension_width']))
-    bot.find_element(selector="Comprimento", by=By.NAME).send_keys(str(data['dimension_length']))
+    #fill in dimensions fields
+    bot.find_element(selector="Altura", by=By.NAME).send_keys(height)
+    bot.find_element(selector="Largura", by=By.NAME).send_keys(width)
+    bot.find_element(selector="Comprimento", by=By.NAME).send_keys(length)
 
-    #seleciona peso
+    #select weight
     bot.find_element(selector="peso", by=By.NAME).click()
-    bot.find_element(selector=f"option[value='{data['product_weight']}']", by=By.CSS_SELECTOR).click()
+    bot.find_element(selector=f"option[value='{weight}']:not([disabled])", by=By.CSS_SELECTOR).click()
 
-    # logging.info("Clica em calcular frete.")
+    #Click on calculate shipping
     bot.find_element(selector="Calcular", by=By.NAME).click()
-
-    bot.wait(2000)
 
     open_tabs = bot.get_tabs()
 
-    #ativa ultima aba aberta
     if len(open_tabs) > 1:
       bot.activate_tab(open_tabs[-1])
 
-    #captura valor cotação
-    value_element = bot.find_element(selector="//th[contains(text(),'Valor total')]/following-sibling::td", by=By.XPATH)
-    value = value_element.text.strip() if value_element else "Valor não encontrado"
-    print(f"Valor da cotação: {value}")
+    #capture quote value
+    quote_value = bot.find_element(selector="//th[contains(text(),'Valor total')]/following-sibling::td", by=By.XPATH).text
+    quote_value = float(quote_value.replace('R$', '').replace(',', '.'))
+    quote_value = round(quote_value, 2)
+
+    #capture delivery deadline
+    delivery = bot.find_element(selector="//th[contains(text(),'Prazo de entrega')]/following-sibling::td", by=By.XPATH).text
+    delivery_date = handle_delivery_time(delivery)
+
+    save_quote_and_delivery(output_sheet, row, quote_value, delivery_date)
+
+    close_tabs(bot)
+
+  except Exception as e:
+    logging.error(f"Erro ao preencher cotação dos correios: {e}")
 
 
-    #captura prazo entrega
-    delivery_element = bot.find_element(selector="//th[contains(text(),'Prazo de entrega')]/following-sibling::td", by=By.XPATH)
-    delivery_text = delivery_element.text.strip() if delivery_element else "Prazo não encontrado."
-    delivery_date = handle_delivery_time(delivery_text)
-    print(f"Prazo entrega: {delivery_date}")
+def save_quote_and_delivery(output_sheet, row, quote_value, delivery_date):
+  """
+  Saves the quote value and delivery time in the output spreadsheet.
+  """
+  try:
+    wb = load_workbook(output_sheet)
+    ws = wb.active
+    ws.cell(row=row, column=15, value=quote_value)
+    ws.cell(row=row, column=16, value=delivery_date)
+    wb.save(output_sheet)
+    logging.info(f"Valor da cotação e prazo de entrega salvos na linha {row}")
+  except Exception as e:
+     logging.error(f"Erro ao salvar cotação e prazo de entrega: {e}")
+   
 
-    #fecha a segunda aba
-    if len(open_tabs) > 1:
-       bot.close_page()
-
+def close_tabs(bot):
+  """
+  Close the second tab and return to the first tab.
+  """
+  open_tabs = bot.get_tabs()
+  if len(open_tabs) > 1:
+    bot.activate_tab(open_tabs[-1])
+    bot.close_page()
     bot.activate_tab(open_tabs[0])
     bot.refresh()
 
-    bot.wait(2000)
+
+def processed_output_sheet_quote_correios(bot, output_sheet):
+  """
+  Processes an output spreadsheet, validates data and performs quotations.
+  """
+  try:
+    wb = load_workbook(output_sheet)
+    ws = wb.active
+
+    for row_index, row in enumerate(ws.iter_rows(min_row=2, values_only=True), start=2):
+        dest_zip = row[4]
+        value_order = row[8]
+        dimensions = row[9]
+        weight = row[10]
+        service = row[12]
+
+        if not dest_zip or dest_zip == "Não informado":
+          save_quote_and_delivery(output_sheet, row_index, "N/A", "N/A")
+          logging.warning(f"CEP de destino não informado na linha {row_index}. Buscar próxima cotação.")          
+          continue
+
+        if not value_order:
+          save_quote_and_delivery(output_sheet, row_index, "N/A", "N/A")
+          logging.warning(f"Valor do Pedido ausente na linha {row_index}. Buscar próxima cotação.")      
+          continue
+
+        if not weight:
+          save_quote_and_delivery(output_sheet, row_index, "N/A", "N/A")
+          logging.warning(f"Valor de Peso ausente na linha {row_index}. Buscar próxima cotação.")
+          continue
+
+        if not dimensions or not isinstance(dimensions, str) or "x" not in dimensions:
+          save_quote_and_delivery(output_sheet, row_index, "N/A", "N/A")
+          logging.warning(f"Dimensões inválidas ou ausentes na linha {row_index}. Buscar próxima cotação.")
+          continue
+
+        try:
+           height, width, length = map(int, dimensions.split(" x "))
+           fill_correios_form(bot, dest_zip, service, height, width, length, weight, row_index, output_sheet)
+        except Exception as e:
+          logging.error(f"Erro ao converter dimensões na linha {row_index}: {e}.")
+          continue
+            
   except Exception as e:
-    logging.error(f"Erro no preenchimento do formulário de cotação dos correios: {e}")
+      logging.error(f"Erro ao ler a planilha de saída: {e}")
 
-
-def process_shipping_quote_correios(bot, data_list):
-   for data in data_list:
-      fill_correios_form(bot, data)
