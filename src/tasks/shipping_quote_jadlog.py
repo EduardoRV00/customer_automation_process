@@ -97,11 +97,11 @@ def jadlog_quote(output_sheet, bot):
             bot.find_element("//input[@id='valComprimento']", By.XPATH).send_keys(comprimento)
             
             # Click the 'Simular' button
-            bot.wait(1000)
+            bot.wait(2000)
             bot.find_element("//input[@value='Simular']", By.XPATH).click()
 
             # Get the quote value
-            bot.wait(3000)
+            bot.wait(2000)
             resultado = bot.find_element('//*[@id="j_idt45_content"]/span', By.XPATH).text.replace('R$ ','')
             resultado_float = float(resultado.replace(',','.'))
 
