@@ -1,7 +1,6 @@
 import pandas as pd
 from openpyxl import load_workbook
 from src.services.api_client import *
-from config import EXCEL_RAW_PATH, EXCEL_PROCESSED_PATH
 from src.utils.setup_logs import *
 
 def data_fill_processed(output_sheet):

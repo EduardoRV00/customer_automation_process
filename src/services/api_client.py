@@ -24,7 +24,7 @@ def api_get(cnpj):
         data = response.json()
         
         
-        # Dict para formatação dos requests em chave : valor
+        # Dict to format requests in key:value
         logging.info("Armazenando informações em formato de Dict chave : valor")
         info = {
             "razao_social": data.get("razao_social", "Não disponível"),
