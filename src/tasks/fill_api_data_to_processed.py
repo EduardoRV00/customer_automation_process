@@ -26,7 +26,7 @@ def data_fill_processed(output_sheet):
             "TELEFONE + DDD": 7,
             "E-MAIL": 8
         }
-        
+        logging.info("Armazenando informações em formato de Dict chave : valor")
         for index, row in entry_df.iterrows():
             cnpj = str(row["CNPJ"])
             info = api_get(cnpj)
@@ -46,7 +46,7 @@ def data_fill_processed(output_sheet):
             # Check if the company is active; if not, prepare the status message
             status_api = "" if info["descricao_situacao_cadastral"] == "ATIVA" else "Empresa inativa"
             
-            # Preenche os dados nas células correspondentes
+            # Fill data with correct cell info. 
             ws.cell(row=index + 2, column=column_mapping["RAZÃO SOCIAL"]).value = info["razao_social"]
             ws.cell(row=index + 2, column=column_mapping["NOME FANTASIA"]).value = info["nome_fantasia"]
             ws.cell(row=index + 2, column=column_mapping["ENDEREÇO"]).value = info["Endereco"]
