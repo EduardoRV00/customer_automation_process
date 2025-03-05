@@ -7,7 +7,7 @@ from src.tasks.processed_data import create_output_sheet
 
 def access_spreadsheet_input():
   """
-  Carrega a planilha de entrada e retorna um dataFrame
+  Loads the input spreadsheet and returns a dataFrame
   """
   try:
     df = pd.read_excel(EXCEL_RAW_PATH, dtype=str)
@@ -21,7 +21,57 @@ def access_spreadsheet_input():
     return None
 
 
+def save_status_to_output(output_sheet, row_index, message):
+  """
+  Saves a status message to a specific cell in the output sheet
+  """
+  try:
+    logging.info(f"Acessando planilha de saída para salvar status.")
+    wb = load_workbook(output_sheet)
+    ws = wb.active
+
+    status_column = 17
+    status_cell = ws.cell(row=row_index + 2, column=status_column)
+
+    #checks if there is already a value in the status field (new message added at the end)
+    current_status = status_cell.value if status_cell.value else ""
+    new_status = f"{current_status}, {message}".strip()
+
+    status_cell.value = message
+    wb.save(output_sheet)
+    logging.info(f"Status salvo com sucesso na célula {status_cell.coordinate}")
+
+  except Exception as e:
+    logging.error(f"Erro ao salvar status na linha {row_index + 2}: {e}")
+
+
+def check_empty_fields(df, output_sheet):
+  """
+  Check empty fields in the spreadsheet
+  """
+  fields = ["CNPJ", "VALOR DO PEDIDO", "DIMENSÕES CAIXA (altura x largura x comprimento cm)", "PESO DO PRODUTO", "TIPO DE SERVIÇO JADLOG", "TIPO DE SERVIÇO CORREIOS"]
+  status_messages = []
+
+  try:
+    logging.info("Verifica campos vazios na planilha de entrada.")
+    for index, row in df.iterrows():
+      empty_fields = [field for field in fields if pd.isna(row[field]) or row[field] == ""]
+      if empty_fields:
+        message = f"Os campos {', '.join(empty_fields)} estão vazios"
+
+        save_status_to_output(output_sheet, index, message)
+        status_messages.append((index, message))
+
+  except Exception as e:
+    logging.error(f"Erro ao verificar campos vazios: {e}")
+
+  return status_messages
+
+
 def fill_output_sheet_with_input_data(input_df, output_sheet):
+  """
+  Populates the output sheet with data from the input sheet, mapping specific columns.
+  """
   try:
     logging.info("Preenchendo a planilha de saída com os dados da planilha de entrada...")
     wb = load_workbook(output_sheet)
@@ -45,62 +95,15 @@ def fill_output_sheet_with_input_data(input_df, output_sheet):
     wb.save(output_sheet)
     logging.info("Planilha de saída preenchida com sucesso!")
   except Exception as e:
-    logging.error(f"Erro ao preencher a planilha de saída: {e}")
+    logging.error(f"Erro ao preencher a planilha de saída: {e}") 
 
-
-def save_status_to_output(output_sheet, row_index, message):
-  """
-  Salva uma mensagem de status em uma célula específica da planilha de saída
-  """
-  try:
-    logging.info(f"Acessando planilha de saída para salvar status.")
-    wb = load_workbook(output_sheet)
-    ws = wb.active
-
-    status_column = 17
-    status_cell = ws.cell(row=row_index + 2, column=status_column)
-
-    #verifica se já existe um valor no campo status (nova msg adicionada no final)
-    current_status = status_cell.value if status_cell.value else ""
-    new_status = f"{current_status}, {message}".strip()
-
-    status_cell.value = message
-    wb.save(output_sheet)
-    logging.info(f"Status salvo com sucesso na célula {status_cell.coordinate}")
-
-  except Exception as e:
-    logging.error(f"Erro ao salvar status na linha {row_index + 2}: {e}")
-
-
-def check_empty_fields(df, output_sheet):
-  """
-  Verifica campos vazios na planilha
-  """
-  fields = ["CNPJ", "VALOR DO PEDIDO", "DIMENSÕES CAIXA (altura x largura x comprimento cm)", "PESO DO PRODUTO", "TIPO DE SERVIÇO JADLOG", "TIPO DE SERVIÇO CORREIOS"]
-  status_messages = []
-
-  try:
-    logging.info("Verifica campos vazios na planilha de entrada.")
-    for index, row in df.iterrows():
-      empty_fields = [field for field in fields if pd.isna(row[field]) or row[field] == ""]
-      if empty_fields:
-        message = f"Os campos {', '.join(empty_fields)} estão vazios"
-
-        save_status_to_output(output_sheet, index, message)
-        status_messages.append((index, message))
-
-  except Exception as e:
-    logging.error(f"Erro ao verificar campos vazios: {e}")
-
-  return status_messages
-  
 
 def process_spreadsheet(output_sheet):
   """
-  Acessa e verificar a planilha
+  Access and check the spreadsheet
   """
   input_df = access_spreadsheet_input()
   if input_df is not None:
     fill_output_sheet_with_input_data(input_df, output_sheet)
-    status_messages = check_empty_fields(input_df, output_sheet)
+    status_messages = check_empty_fields(input_df, output_sheet)   
   return []

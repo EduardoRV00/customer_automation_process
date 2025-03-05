@@ -30,7 +30,9 @@ from src.tasks.fill_api_data_to_processed import *
 from src.tasks.shipping_quote_jadlog import *
 from src.tasks.shipping_quote_correios import *
 from src.utils.manipulate_spreadsheet import *
+from src.tasks.fill_api_data_to_processed import *
 from openpyxl import load_workbook
+from src.tasks.rpa_challenge_data_fill import *
 BotMaestroSDK.RAISE_NOT_CONNECTED = False
 
 
@@ -51,9 +53,6 @@ def main():
 
     # Configure whether or not to run on headless mode
     bot.headless = False
-
-    # Uncomment to change the default Browser to Firefox
-    # bot.browser = Browser.FIREFOX
 
     # Uncomment to set the WebDriver path
     bot.driver_path = CHROME_DRIVER
@@ -76,30 +75,48 @@ def main():
     # Fills in empty output sheet cells
     fill_data_b4_rpachallenge(output_sheet)
 
-    # # ABRE SITE CORREIOS
-    # open_correios_site(bot)
-    # # PREENCHE FORMULARIO
-    # fill_correios_form(bot)
-    # bot.stop_browser()
+    #Fill Rpa challenge text boxes.
+    open_rpa_challenge_website(bot)
     
-    # Opens jadlog website
+    fill_rpa_challenge(bot, output_sheet)
+
+    open_correios_site(bot)
+    logging.info("Inicia busca de cotação dos Correios.")
+    processed_output_sheet_quote_correios(bot, output_sheet)
+    logging.info("Finaliza busca de cotação dos Correios.")
+    logging.info("Fecha site dos correios no navegador.")
+    bot.stop_browser()
+
+    
+    # Check the output sheet information | Is currently running with placeholders
+    # validar_informacoes(quote_data)
+    
+    # Performs quote on the jadlog website
     open_jadlog_site(bot)
     # Performs quote on the jadlog website
     jadlog_quote(output_sheet, bot)
-    bot.stop_browser()
+    
+    
+
+    
+    
 
     # Fills in empty output sheet cells after quotes
     fill_missing_values(output_sheet)
 
     # Wait 3 seconds before closing
     logging.info('Finalizando execução do bot...')
-    bot.wait(3000)
+    logging.info("Processo Finalizado.")
+    # bot.wait(3000)
 
     # Finish and clean up the Web Browser
     # You MUST invoke the stop_browser to avoid
     # leaving instances of the webdriver open
-    # bot.stop_browser()
+    bot.stop_browser()
 
+    
+    # print(data_fill_processed())
+    
     # Uncomment to mark this task as finished on BotMaestro
     # maestro.finish_task(
     #     task_id=execution.task_id,
