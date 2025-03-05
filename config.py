@@ -12,6 +12,7 @@ CHROME_DRIVER = r'C:\customer_automation_process\src\utils\driver\chromedriver.e
 # LOG_PATH = 'C:\customer_automation_process\log'
 
 LOG_DIR = os.path.join(os.getcwd(), "Logs")
+LOG_DEV = os.path.join(os.getcwd(), "Logs_Dev")
 
 URL_CORREIOS = "https://www2.correios.com.br/sistemas/precosPrazos/"
 URL_JADLOG = "https://www.jadlog.com.br/jadlog/simulacao"
