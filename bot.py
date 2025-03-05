@@ -38,98 +38,89 @@ BotMaestroSDK.RAISE_NOT_CONNECTED = False
 
 
 def main():
-    setup_logging()
-    logging.info("Início da execução do processo.")
-    logging.info("Processando dados...")
-    # Runner passes the server url, the id of the task being executed,
-    # the access token and the parameters that this task receives (when applicable).
-    maestro = BotMaestroSDK.from_sys_args()
-    ## Fetch the BotExecution with details from the task, including parameters
-    execution = maestro.get_execution()
+    try:
+        setup_logging()
+        logging.info("Início da execução do processo.")
+        logging.info("Processando dados...")
+        # Runner passes the server url, the id of the task being executed,
+        # the access token and the parameters that this task receives (when applicable).
+        maestro = BotMaestroSDK.from_sys_args()
+        ## Fetch the BotExecution with details from the task, including parameters
+        execution = maestro.get_execution()
 
-    print(f"Task ID is: {execution.task_id}")
-    print(f"Task Parameters are: {execution.parameters}")
+        print(f"Task ID is: {execution.task_id}")
+        print(f"Task Parameters are: {execution.parameters}")
 
-    bot = WebBot()
+        bot = WebBot()
 
-    # Configure whether or not to run on headless mode
-    bot.headless = False
+        # Configure whether or not to run on headless mode
+        bot.headless = False
 
-    # Uncomment to set the WebDriver path
-    bot.driver_path = CHROME_DRIVER
+        # Uncomment to set the WebDriver path
+        bot.driver_path = CHROME_DRIVER
 
-    # Opens the BotCity website.
-    # open_correios_site()
-    # get_screenshots()
+        # Opens the BotCity website.
+        # open_correios_site()
+        # get_screenshots()
 
-    # Implement here your logic...
+        # Implement here your logic...
+         
+        # Creates the output sheet and assigns the file path to the variable output_sheet
+        output_sheet = create_output_sheet()
+
+        process_spreadsheet(output_sheet)
+        
+        # Fill output_sheet with API consultation data
+        data_fill_processed(output_sheet)
+        
+        # Check if the API query has returned the zip code correctly. Otherwise, it ends the execution of the bot.
+        validate_cep(output_sheet)
+        
+        # Fills in empty output sheet cells
+        fill_data_b4_rpachallenge(output_sheet)
+
+        #Fill Rpa challenge text boxes.
+        open_rpa_challenge_website(bot)
+        
+        fill_rpa_challenge(bot, output_sheet)
+
+        open_correios_site(bot)
+        logging.info("Inicia busca de cotação dos Correios.")
+        processed_output_sheet_quote_correios(bot, output_sheet)
+        logging.info("Finaliza busca de cotação dos Correios.")
+        logging.info("Fecha site dos correios no navegador.")
+        bot.stop_browser()
+        
+        # Performs quote on the jadlog website
+        open_jadlog_site(bot)
+        # Performs quote on the jadlog website
+        jadlog_quote(output_sheet, bot)
+        
+        # Fills in empty output sheet cells after quotes
+        fill_missing_values(output_sheet)
+
+        # Wait 3 seconds before closing
+        logging.info('Finalizando execução do bot...')
+        logging.info("Processo Finalizado.")
+
+        # Finish and clean up the Web Browser
+        # You MUST invoke the stop_browser to avoid
+        # leaving instances of the webdriver open
+        bot.stop_browser()
+        
+        # Uncomment to mark this task as finished on BotMaestro
+        # maestro.finish_task(
+        #     task_id=execution.task_id,
+        #     status=AutomationTaskFinishStatus.SUCCESS,
+        #     message="Task Finished OK.",
+        #     total_items=0,
+        #     processed_items=0,
+        #     failed_items=0
+        # )
     
-    
-    # Creates the output sheet and assigns the file path to the variable output_sheet
-    output_sheet = create_output_sheet()
-
-    process_spreadsheet(output_sheet)
-    
-    # Fill output_sheet with API consultation data
-    data_fill_processed(output_sheet)
-    
-    # Check if the API query has returned the zip code correctly. Otherwise, it ends the execution of the bot.
-    validate_cep(output_sheet)
-    
-    # Fills in empty output sheet cells
-    fill_data_b4_rpachallenge(output_sheet)
-
-    #Fill Rpa challenge text boxes.
-    open_rpa_challenge_website(bot)
-    
-    fill_rpa_challenge(bot, output_sheet)
-
-    open_correios_site(bot)
-    logging.info("Inicia busca de cotação dos Correios.")
-    processed_output_sheet_quote_correios(bot, output_sheet)
-    logging.info("Finaliza busca de cotação dos Correios.")
-    logging.info("Fecha site dos correios no navegador.")
-    bot.stop_browser()
-
-    
-    # Check the output sheet information | Is currently running with placeholders
-    # validar_informacoes(quote_data)
-    
-    # Performs quote on the jadlog website
-    open_jadlog_site(bot)
-    # Performs quote on the jadlog website
-    jadlog_quote(output_sheet, bot)
-    
-    
-
-    
-    
-
-    # Fills in empty output sheet cells after quotes
-    fill_missing_values(output_sheet)
-
-    # Wait 3 seconds before closing
-    logging.info('Finalizando execução do bot...')
-    logging.info("Processo Finalizado.")
-    # bot.wait(3000)
-
-    # Finish and clean up the Web Browser
-    # You MUST invoke the stop_browser to avoid
-    # leaving instances of the webdriver open
-    bot.stop_browser()
-
-    
-    # print(data_fill_processed())
-    
-    # Uncomment to mark this task as finished on BotMaestro
-    # maestro.finish_task(
-    #     task_id=execution.task_id,
-    #     status=AutomationTaskFinishStatus.SUCCESS,
-    #     message="Task Finished OK.",
-    #     total_items=0,
-    #     processed_items=0,
-    #     failed_items=0
-    # )
+    except Exception as e:
+        logging.warning(f"Erro fatal durante a execução do bot: {e}")
+        logging.info("Finalizando a execução do bot") 
 
 
 def not_found(label):
