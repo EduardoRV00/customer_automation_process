@@ -31,6 +31,7 @@ from src.tasks.shipping_quote_jadlog import *
 from src.tasks.shipping_quote_correios import *
 from src.utils.manipulate_spreadsheet import *
 from src.tasks.fill_api_data_to_processed import *
+from src.utils.error_handling import *
 from openpyxl import load_workbook
 from src.tasks.rpa_challenge_data_fill import *
 BotMaestroSDK.RAISE_NOT_CONNECTED = False
@@ -71,6 +72,9 @@ def main():
     
     # Fill output_sheet with API consultation data
     data_fill_processed(output_sheet)
+    
+    # Check if the API query has returned the zip code correctly. Otherwise, it ends the execution of the bot.
+    validate_cep(output_sheet)
     
     # Fills in empty output sheet cells
     fill_data_b4_rpachallenge(output_sheet)
