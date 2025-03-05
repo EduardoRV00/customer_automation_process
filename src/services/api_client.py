@@ -23,6 +23,7 @@ def api_get(cnpj):
         response.raise_for_status()
         data = response.json()
         
+
         if response.status_code == 200: 
             # Dict to format requests in key:value
             info = {
@@ -44,3 +45,25 @@ def api_get(cnpj):
     except requests.exceptions.RequestException as e:
         logging.error(f"Erro ao consultar o CNPJ {cnpj}: {str(e)}")
     return None
+
+        
+        # Dict to format requests in key:value
+        logging.info("Armazenando informações em formato de Dict chave : valor")
+        info = {
+            "razao_social": data.get("razao_social", "Não disponível"),
+            "nome_fantasia": data.get("nome_fantasia", "Não disponível"),
+            "descricao_situacao_cadastral": data.get("descricao_situacao_cadastral", "Nao disponivel"),
+            "Endereco": f"{data.get('logradouro', 'Não informado')}, {data.get('numero', 'S/N')} - {data.get('municipio', 'Não informado')}",
+            "cep": data.get("cep", "Não informado"),
+            "identificador_matriz_filial": "Matriz" if data.get("identificador_matriz_filial") == 1 else "Filial",
+            "ddd_telefone_1": data.get("ddd_telefone_1", "Não informado"),
+            "email":"N/A" if data.get("email") == None else "email"
+        }
+        
+        
+        logging.info("Retorna o Dict com as respectivas informações")
+        return  info
+        
+    except Exception as e:
+        logging.error(f"Erro na consulta do CNPJ {cnpj}: {str(e)}")
+        return None

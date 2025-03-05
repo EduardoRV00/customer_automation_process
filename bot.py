@@ -26,11 +26,13 @@ from botcity.web import WebBot, Browser, By
 from botcity.maestro import *
 from src.utils.setup_logs import *
 from src.tasks.processed_data import *
+from src.tasks.fill_api_data_to_processed import *
 from src.tasks.shipping_quote_jadlog import *
 from src.tasks.shipping_quote_correios import *
 from src.utils.manipulate_spreadsheet import *
-from openpyxl import load_workbook
 from src.tasks.fill_api_data_to_processed import *
+from openpyxl import load_workbook
+from src.tasks.rpa_challenge_data_fill import *
 BotMaestroSDK.RAISE_NOT_CONNECTED = False
 
 
@@ -52,15 +54,12 @@ def main():
     # Configure whether or not to run on headless mode
     bot.headless = False
 
-    # Uncomment to change the default Browser to Firefox
-    # bot.browser = Browser.FIREFOX
-
     # Uncomment to set the WebDriver path
     bot.driver_path = CHROME_DRIVER
 
-
-    open_correios_site()
-    get_screenshots()
+    # Opens the BotCity website.
+    # open_correios_site()
+    # get_screenshots()
 
     # Implement here your logic...
     
@@ -68,43 +67,55 @@ def main():
     # Creates the output sheet and assigns the file path to the variable output_sheet
     output_sheet = create_output_sheet()
 
-
     process_spreadsheet(output_sheet)
-
+    
+    # Fill output_sheet with API consultation data
     data_fill_processed(output_sheet)
     
+    # Fills in empty output sheet cells
+    fill_data_b4_rpachallenge(output_sheet)
 
+    #Fill Rpa challenge text boxes.
+    open_rpa_challenge_website(bot)
     
-    
-    # ABRE SITE CORREIOS
+    fill_rpa_challenge(bot, output_sheet)
+
     open_correios_site(bot)
-    # PREENCHE FORMULARIO
-    logging.info("Inicia preenchimento dos dados de cotação dos correios.")
-    process_shipping_quote_correios(bot, data)
-    logging.info("Finaliza preenchimento de cotação dos correios.")
-    # process_shipping_quotes(bot, output_sheet)
+    logging.info("Inicia busca de cotação dos Correios.")
+    processed_output_sheet_quote_correios(bot, output_sheet)
+    logging.info("Finaliza busca de cotação dos Correios.")
     logging.info("Fecha site dos correios no navegador.")
     bot.stop_browser()
 
     
     # Check the output sheet information | Is currently running with placeholders
-    #validar_informacoes(quote_data)
+    # validar_informacoes(quote_data)
     
     # Performs quote on the jadlog website
-    jadlog_quote(output_sheet)
-    bot.stop_browser()
+    open_jadlog_site(bot)
+    # Performs quote on the jadlog website
+    jadlog_quote(output_sheet, bot)
+    
+    
+
+    
+    
+
+    # Fills in empty output sheet cells after quotes
+    fill_missing_values(output_sheet)
 
     # Wait 3 seconds before closing
     logging.info('Finalizando execução do bot...')
-    bot.wait(3000)
+    logging.info("Processo Finalizado.")
+    # bot.wait(3000)
 
     # Finish and clean up the Web Browser
     # You MUST invoke the stop_browser to avoid
     # leaving instances of the webdriver open
     bot.stop_browser()
 
-
     
+    # print(data_fill_processed())
     
     # Uncomment to mark this task as finished on BotMaestro
     # maestro.finish_task(
