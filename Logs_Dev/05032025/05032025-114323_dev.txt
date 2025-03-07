@@ -1,0 +1,2 @@
+2025-03-05 11:43:23,063 - DEBUG - Processo iniciado pelo bot.
+2025-03-05 11:43:23,167 - ERROR - Erro ao verificar campos vazios: save_status_to_output() missing 2 required positional arguments: 'logging_client' and 'logging_dev'

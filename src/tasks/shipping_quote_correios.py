@@ -7,13 +7,16 @@ from datetime import datetime, timedelta
 from src.utils.manipulate_spreadsheet import *
 
 
-def open_correios_site(bot):
+def open_correios_site(bot, logger_client, logger_dev):
   """
   Open the post office website in the browser.
   """
-  bot.headless = False
-  bot.browse(URL_CORREIOS)
-  logging.info("Abre site dos correios no navegador.")
+  try:
+    bot.headless = False
+    bot.browse(URL_CORREIOS)
+    logger_client.info("Abre site dos correios no navegador.")
+  except Exception as e:
+     logger_dev.error(f"Erro ao abrir site no navegador. {e}")
 
 
 def handle_delivery_time(delivery_text):
@@ -35,7 +38,7 @@ def handle_delivery_time(delivery_text):
   return current_date.strftime("%d/%m/%Y")
 
 
-def fill_correios_form(bot, dest_zip, service, height, width, length, weight, row, output_sheet):
+def fill_correios_form(bot, dest_zip, service, height, width, length, weight, row, output_sheet, logger_client, logger_dev):
   """ 
   Fill out the Correios shipping quote form and capture the quote values
   """
@@ -92,15 +95,15 @@ def fill_correios_form(bot, dest_zip, service, height, width, length, weight, ro
     delivery = bot.find_element(selector="//th[contains(text(),'Prazo de entrega')]/following-sibling::td", by=By.XPATH).text
     delivery_date = handle_delivery_time(delivery)
 
-    save_quote_and_delivery(output_sheet, row, quote_value, delivery_date)
+    save_quote_and_delivery(output_sheet, row, quote_value, delivery_date, logger_client, logger_dev)
 
     close_tabs(bot)
 
   except Exception as e:
-    logging.error(f"Erro ao preencher cotação dos correios: {e}")
+    logger_dev.error(f"Erro ao preencher cotação dos correios: {e}")
 
 
-def save_quote_and_delivery(output_sheet, row, quote_value, delivery_date):
+def save_quote_and_delivery(output_sheet, row, quote_value, delivery_date, logger_client, logger_dev):
   """
   Saves the quote value and delivery time in the output spreadsheet.
   """
@@ -110,9 +113,9 @@ def save_quote_and_delivery(output_sheet, row, quote_value, delivery_date):
     ws.cell(row=row, column=15, value=quote_value)
     ws.cell(row=row, column=16, value=delivery_date)
     wb.save(output_sheet)
-    logging.info(f"Valor da cotação e prazo de entrega salvos na linha {row}")
+    logger_client.info(f"Valor da cotação e prazo de entrega salvos na linha {row}")
   except Exception as e:
-     logging.error(f"Erro ao salvar cotação e prazo de entrega: {e}")
+     logger_dev.error(f"Erro ao salvar cotação e prazo de entrega: {e}")
    
 
 def close_tabs(bot):
@@ -127,7 +130,7 @@ def close_tabs(bot):
     bot.refresh()
 
 
-def processed_output_sheet_quote_correios(bot, output_sheet):
+def processed_output_sheet_quote_correios(bot, output_sheet, logger_client, logger_dev):
   """
   Processes an output spreadsheet, validates data and performs quotations.
   """
@@ -143,32 +146,32 @@ def processed_output_sheet_quote_correios(bot, output_sheet):
         service = row[12]
 
         if not dest_zip or dest_zip == "Não informado":
-          save_quote_and_delivery(output_sheet, row_index, "N/A", "N/A")
-          logging.warning(f"CEP de destino não informado na linha {row_index}. Buscar próxima cotação.")          
+          save_quote_and_delivery(output_sheet, row_index, "N/A", "N/A", logger_client, logger_dev)
+          logger_client.warning(f"CEP de destino não informado na linha {row_index}. Buscar próxima cotação.")          
           continue
 
         if not value_order:
-          save_quote_and_delivery(output_sheet, row_index, "N/A", "N/A")
-          logging.warning(f"Valor do Pedido ausente na linha {row_index}. Buscar próxima cotação.")      
+          save_quote_and_delivery(output_sheet, row_index, "N/A", "N/A", logger_client, logger_dev)
+          logger_client.warning(f"Valor do Pedido ausente na linha {row_index}. Buscar próxima cotação.")      
           continue
 
         if not weight:
-          save_quote_and_delivery(output_sheet, row_index, "N/A", "N/A")
-          logging.warning(f"Valor de Peso ausente na linha {row_index}. Buscar próxima cotação.")
+          save_quote_and_delivery(output_sheet, row_index, "N/A", "N/A", logger_client, logger_dev)
+          logger_client.warning(f"Valor de Peso ausente na linha {row_index}. Buscar próxima cotação.")
           continue
 
         if not dimensions or not isinstance(dimensions, str) or "x" not in dimensions:
-          save_quote_and_delivery(output_sheet, row_index, "N/A", "N/A")
-          logging.warning(f"Dimensões inválidas ou ausentes na linha {row_index}. Buscar próxima cotação.")
+          save_quote_and_delivery(output_sheet, row_index, "N/A", "N/A", logger_client, logger_dev)
+          logger_client.warning(f"Dimensões inválidas ou ausentes na linha {row_index}. Buscar próxima cotação.")
           continue
 
         try:
            height, width, length = map(int, dimensions.split(" x "))
-           fill_correios_form(bot, dest_zip, service, height, width, length, weight, row_index, output_sheet)
+           fill_correios_form(bot, dest_zip, service, height, width, length, weight, row_index, output_sheet, logger_client, logger_dev)
         except Exception as e:
-          logging.error(f"Erro ao converter dimensões na linha {row_index}: {e}.")
+          logger_dev.error(f"Erro ao converter dimensões na linha {row_index}: {e}.")
           continue
             
   except Exception as e:
-      logging.error(f"Erro ao ler a planilha de saída: {e}")
+      logger_dev.error(f"Erro ao ler a planilha de saída: {e}")
 

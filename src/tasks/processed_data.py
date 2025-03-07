@@ -121,4 +121,4 @@ def fill_missing_values(output_sheet):
         wb.save(output_sheet)
         
     except Exception as e:
-        logging.info(f"Erro ao preencher células em branco na planilha de saída: {e}")   
+        logging.warning(f"Erro ao preencher células em branco na planilha de saída: {e}")   
