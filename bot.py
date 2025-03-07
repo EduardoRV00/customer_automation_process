@@ -79,17 +79,21 @@ def main():
         #Fill Rpa challenge text boxes.
         open_rpa_challenge_website(bot)
         get_screenshots(logger_client, logger_dev)
+
         
         fill_rpa_challenge(bot, output_sheet)
 
         #performs quote on the correios website
         open_correios_site(bot, logger_client, logger_dev)
-        logger_client.info("Inicia busca de cotação dos Correios.")
+        msg_quote_correios = "Inicia busca de cotação dos Correios."
+        logger_client.info(msg_quote_correios), logger_dev.info(msg_quote_correios)
         get_screenshots(logger_client, logger_dev)
         processed_output_sheet_quote_correios(bot, output_sheet, logger_client, logger_dev)
-        logger_client.info("Finaliza busca de cotação dos Correios.")
+        msg_ends_quote_correios = "Finaliza busca de cotação dos Correios."
+        logger_client.info(msg_ends_quote_correios), logger_dev.info(msg_ends_quote_correios)
         get_screenshots(logger_client, logger_dev)
-        logger_client.info("Fecha site dos correios no navegador.")
+        msg_close_correois_site = "Fecha site dos correios no navegador."
+        logger_client.info(msg_close_correois_site), logger_dev.info(msg_close_correois_site)
         bot.stop_browser()
 
         
@@ -106,8 +110,8 @@ def main():
         # Fills in empty output sheet cells after quotes
         fill_missing_values(output_sheet)
 
-        logger_client.info('Finalizando execução do bot...')
-        logger_client.info("Processo Finalizado.")
+        msg_end_bot = 'Finalizando execução do bot... Processo Finalizado.'
+        logger_client.info(msg_end_bot), logger_dev.info(msg_end_bot)
         # bot.wait(3000)
 
         # Finish and clean up the Web Browser

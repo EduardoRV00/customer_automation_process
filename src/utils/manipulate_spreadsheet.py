@@ -12,7 +12,9 @@ def access_spreadsheet_input(logger_client, logger_dev):
   try:
     df = pd.read_excel(EXCEL_RAW_PATH, dtype=str)
     print(f"Dados carregados da planilha:\n{df.head()}")
-    logger_client.info("Planilha de entrada carregada com sucesso.")
+
+    msg_spreadsheet = "Planilha de entrada carregada com sucesso."
+    logger_client.info(msg_spreadsheet), logger_dev.info(msg_spreadsheet)
 
     return df
   
@@ -26,7 +28,9 @@ def save_status_to_output(output_sheet, row_index, message, logger_client, logge
   Saves a status message to a specific cell in the output sheet
   """
   try:
-    logger_client.info(f"Acessando planilha de saída para salvar status.")
+    msg_save_output = f"Acessando planilha de saída para salvar status."
+    logger_client.info(msg_save_output), logger_dev.info(msg_save_output)
+
     wb = load_workbook(output_sheet)
     ws = wb.active
 
@@ -39,7 +43,8 @@ def save_status_to_output(output_sheet, row_index, message, logger_client, logge
 
     status_cell.value = message
     wb.save(output_sheet)
-    logger_client.info(f"Status salvo com sucesso na célula {status_cell.coordinate}")
+    msg_status = f"Status salvo com sucesso na célula {status_cell.coordinate}"
+    logger_client.info(msg_status), logger_dev.info(msg_status)
 
   except Exception as e:
     logger_dev.error(f"Erro ao salvar status na linha {row_index + 2}: {e}")
@@ -53,7 +58,9 @@ def check_empty_fields(df, output_sheet, logger_client, logger_dev):
   status_messages = []
 
   try:
-    logger_client.info("Verifica campos vazios na planilha de entrada.")
+    msg_empty_fields = "Verifica campos vazios na planilha de entrada."
+    logger_client.info(msg_empty_fields), logger_dev.info(msg_empty_fields)
+
     for index, row in df.iterrows():
       empty_fields = [field for field in fields if pd.isna(row[field]) or row[field] == ""]
       if empty_fields:
@@ -73,7 +80,9 @@ def fill_output_sheet_with_input_data(input_df, output_sheet, logger_client, log
   Populates the output sheet with data from the input sheet, mapping specific columns.
   """
   try:
-    logger_client.info("Preenchendo a planilha de saída com os dados da planilha de entrada...")
+    msg_fill_outputsheet = "Preenchendo a planilha de saída com os dados da planilha de entrada..."
+    logger_client.info(msg_fill_outputsheet), logger_dev.info(msg_fill_outputsheet)
+
     wb = load_workbook(output_sheet)
     ws = wb.active
 
@@ -93,7 +102,9 @@ def fill_output_sheet_with_input_data(input_df, output_sheet, logger_client, log
       ws.cell(row=index + 2, column=13).value = service_type_correios
 
     wb.save(output_sheet)
-    logger_client.info("Planilha de saída preenchida com sucesso!")
+    msg_outputsheet_success = "Planilha de saída preenchida com sucesso!"
+    logger_client.info(msg_outputsheet_success), logger_dev.info(msg_outputsheet_success)
+    
   except Exception as e:
     logger_dev.error(f"Erro ao preencher a planilha de saída: {e}") 
 

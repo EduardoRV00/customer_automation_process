@@ -14,7 +14,11 @@ def open_correios_site(bot, logger_client, logger_dev):
   try:
     bot.headless = False
     bot.browse(URL_CORREIOS)
-    logger_client.info("Abre site dos correios no navegador.")
+    bot.maximize_window()
+
+    msg_open_site_correios = "Abre site dos correios no navegador."
+    logger_client.info(msg_open_site_correios), logger_dev.info(msg_open_site_correios)
+
   except Exception as e:
      logger_dev.error(f"Erro ao abrir site no navegador. {e}")
 
@@ -113,7 +117,10 @@ def save_quote_and_delivery(output_sheet, row, quote_value, delivery_date, logge
     ws.cell(row=row, column=15, value=quote_value)
     ws.cell(row=row, column=16, value=delivery_date)
     wb.save(output_sheet)
-    logger_client.info(f"Valor da cotação e prazo de entrega salvos na linha {row}")
+
+    msg_save_quote = f"Valor da cotação e prazo de entrega salvos na linha {row}"
+    logger_client.info(msg_save_quote), logger_dev.info(msg_save_quote)
+   
   except Exception as e:
      logger_dev.error(f"Erro ao salvar cotação e prazo de entrega: {e}")
    
@@ -147,22 +154,26 @@ def processed_output_sheet_quote_correios(bot, output_sheet, logger_client, logg
 
         if not dest_zip or dest_zip == "Não informado":
           save_quote_and_delivery(output_sheet, row_index, "N/A", "N/A", logger_client, logger_dev)
-          logger_client.warning(f"CEP de destino não informado na linha {row_index}. Buscar próxima cotação.")          
+          msg_empty_cep = f"CEP de destino não informado na linha {row_index}. Buscar próxima cotação."
+          logger_client.warning(msg_empty_cep), logger_dev.warning(msg_empty_cep)        
           continue
 
         if not value_order:
           save_quote_and_delivery(output_sheet, row_index, "N/A", "N/A", logger_client, logger_dev)
-          logger_client.warning(f"Valor do Pedido ausente na linha {row_index}. Buscar próxima cotação.")      
+          msg_empty_order = f"Valor do Pedido ausente na linha {row_index}. Buscar próxima cotação."
+          logger_client.warning(msg_empty_order), logger_dev.warning(msg_empty_order)
           continue
 
         if not weight:
           save_quote_and_delivery(output_sheet, row_index, "N/A", "N/A", logger_client, logger_dev)
-          logger_client.warning(f"Valor de Peso ausente na linha {row_index}. Buscar próxima cotação.")
+          msg_empty_quote_delivery = f"Valor de Peso ausente na linha {row_index}. Buscar próxima cotação."
+          logger_client.warning(msg_empty_quote_delivery), logger_dev.warning(msg_empty_quote_delivery)
           continue
 
         if not dimensions or not isinstance(dimensions, str) or "x" not in dimensions:
           save_quote_and_delivery(output_sheet, row_index, "N/A", "N/A", logger_client, logger_dev)
-          logger_client.warning(f"Dimensões inválidas ou ausentes na linha {row_index}. Buscar próxima cotação.")
+          msg_empty_dimensions = f"Dimensões inválidas ou ausentes na linha {row_index}. Buscar próxima cotação."
+          logger_client.warning(msg_empty_dimensions), logger_dev.warning(msg_empty_dimensions)
           continue
 
         try:
