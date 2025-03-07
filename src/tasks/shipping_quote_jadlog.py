@@ -47,19 +47,19 @@ def jadlog_quote(output_sheet, bot):
             
             # Checks empty cells and ignores quotation for the table line
             if row['CEP'] == 'Não informado':
-                logging.info(f'Pulando cotação da linha {row.name + 2}. CEP do destino não declarado')
+                logging.warning(f'Pulando cotação da linha {row.name + 2}. CEP do destino não declarado')
                 continue
             
             if pd.isnull(row['VALOR DO PEDIDO']):
-                logging.info(f'Pulando cotação da linha {row.name + 2}. Valor do pedido não declarado')
+                logging.warning(f'Pulando cotação da linha {row.name + 2}. Valor do pedido não declarado')
                 continue
 
             if pd.isnull(row['DIMENSÕES CAIXA']):
-                logging.info(f'Pulando cotação da linha {row.name + 2}. Dimensões da caixa não declaradas')
+                logging.warning(f'Pulando cotação da linha {row.name + 2}. Dimensões da caixa não declaradas')
                 continue      
    
             if pd.isnull(row['PESO DO PRODUTO']):
-                logging.info(f'Pulando cotação da linha {row.name + 2}. Peso não declarado')
+                logging.warning(f'Pulando cotação da linha {row.name + 2}. Peso não declarado')
                 continue
             
             # Separates the dimensions of the box into 3 variables
@@ -101,7 +101,7 @@ def jadlog_quote(output_sheet, bot):
             bot.find_element("//input[@value='Simular']", By.XPATH).click()
 
             # Get the quote value
-            bot.wait(2000)
+            bot.wait(3000)
             resultado = bot.find_element('//*[@id="j_idt45_content"]/span', By.XPATH).text.replace('R$ ','')
             resultado_float = float(resultado.replace(',','.'))
 
@@ -113,4 +113,4 @@ def jadlog_quote(output_sheet, bot):
         # return bot
     
     except Exception as e:
-        logging.info(f"Erro ao preencher formulário de cotação: {e}")    
+        logging.warning(f"Erro ao preencher formulário de cotação: {e}")    
