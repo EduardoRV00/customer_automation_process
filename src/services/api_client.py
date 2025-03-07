@@ -1,7 +1,6 @@
 import requests 
-from src.utils.setup_logs import *
 
-def api_get(cnpj):
+def api_get(cnpj, logger_client, logger_dev):
     '''
     
     Creates a function to consult API Brazil and retrieve company information based on CNPJ.
@@ -11,15 +10,15 @@ def api_get(cnpj):
     and returns them in a structured format. If an error occurs, it logs the issue and returns None.
     '''
     try:
-        setup_logging()
         
         if len(cnpj) < 14:
             cnpj = cnpj.zfill(14)
             
-        
-        logging.info("Realizando request em Brasil API ")
+        msg_request = "Realizando request em Brasil API "
+        logger_client.info(msg_request)
+        logger_dev.info(msg_request)
         api_url = f'https://brasilapi.com.br/api/cnpj/v1/{cnpj}'
-        response = requests.get(api_url)  
+        response = requests.get(api_url)
         response.raise_for_status()
         data = response.json()
         
@@ -41,7 +40,7 @@ def api_get(cnpj):
             return  info
             
     except ValueError as e:
-        logging.error(f"Erro ao processar resposta JSON para o CNPJ {cnpj}: {str(e)}")
+        logger_dev.error(f"Erro ao processar resposta JSON para o CNPJ {cnpj}: {str(e)}")
     except requests.exceptions.RequestException as e:
-        logging.error(f"Erro ao consultar o CNPJ {cnpj}: {str(e)}")
+        logger_dev.warning(f"Erro ao consultar o CNPJ {cnpj}: {str(e)}")
     return None

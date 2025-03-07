@@ -1,2 +1,0 @@
-2025-03-05 11:55:06,292 - INFO - Processo iniciado pelo bot.
-2025-03-05 11:55:06,391 - ERROR - Erro ao verificar campos vazios: save_status_to_output() missing 1 required positional argument: 'logging_dev'

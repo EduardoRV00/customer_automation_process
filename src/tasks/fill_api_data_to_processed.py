@@ -3,16 +3,20 @@ from openpyxl import load_workbook
 from src.services.api_client import *
 from src.utils.setup_logs import *
 
-def data_fill_processed(output_sheet):
+def data_fill_processed(output_sheet, logger_client, logger_dev):
     """
     Fills the processed spreadsheet with data returned by the API and concatenates
     the API status message with any message already present in the cell.
     """
     try:
-        logging.info("Lendo arquivo Excel de entrada")
+        msg_entry_sheet = "Lendo arquivo Excel de entrada"
+        logger_client.info(msg_entry_sheet)
+        logger_dev.info(msg_entry_sheet)
         entry_df = pd.read_excel(output_sheet)
         
-        logging.info("Processando CNPJs e consultando API")
+        msg_processing_data = "Processando CNPJs e consultando API"
+        logger_client.info(msg_processing_data)
+        logger_dev.info(msg_processing_data)
         wb = load_workbook(output_sheet)
         ws = wb.active
         
@@ -26,7 +30,10 @@ def data_fill_processed(output_sheet):
             "TELEFONE + DDD": 7,
             "E-MAIL": 8
         }
-        logging.info("Armazenando informações em formato de Dict chave : valor")
+        
+        msg_dict = "Armazenando informações em formato de Dict chave : valor"
+        logger_client.info(msg_dict)
+        logger_dev.info(msg_dict)
         for index, row in entry_df.iterrows():
             cnpj = str(row["CNPJ"])
             info = api_get(cnpj)
@@ -66,13 +73,16 @@ def data_fill_processed(output_sheet):
                 else:
                     new_status = status_api
                 status_cell.value = new_status
-            
-            logging.info(f"Dados do CNPJ {cnpj} preenchidos com sucesso")
+            msg_cnpj = f"Dados do CNPJ {cnpj} preenchidos com sucesso"
+            logger_client.info(msg_cnpj)
+            logger_dev.info(msg_cnpj)
         
         wb.save(output_sheet)
-        logging.info("Planilha preenchida com sucesso!")
+        msg_sheet ="Planilha preenchida com sucesso!"
+        logger_client.info(msg_sheet)
+        logger_dev.info(msg_sheet)
     
     except Exception as e:
-        logging.error(f"Erro ao preencher a planilha: {e}")
+         logger_dev.error(f"Erro ao preencher a planilha: {e}")
 
 
