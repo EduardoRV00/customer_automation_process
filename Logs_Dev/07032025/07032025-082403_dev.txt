@@ -1,6 +1,0 @@
-2025-03-07 08:24:03,946 - INFO - Processo iniciado pelo bot.
-2025-03-07 08:24:15,320 - INFO - Imagem capturada e salva no log do desenvolvedor.
-2025-03-07 08:24:28,555 - INFO - Imagem capturada e salva no log do desenvolvedor.
-2025-03-07 08:24:45,933 - INFO - Imagem capturada e salva no log do desenvolvedor.
-2025-03-07 08:24:49,667 - INFO - Imagem capturada e salva no log do desenvolvedor.
-2025-03-07 08:25:06,855 - INFO - Imagem capturada e salva no log do desenvolvedor.

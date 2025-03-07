@@ -97,10 +97,10 @@ def main():
         # validar_informacoes(quote_data)
         
         # Performs quote on the jadlog website
-        open_jadlog_site(bot)
+        open_jadlog_site(bot, logger_client, logger_dev)
         get_screenshots(logger_client, logger_dev)
         # Performs quote on the jadlog website
-        jadlog_quote(output_sheet, bot)
+        jadlog_quote(output_sheet, bot, logger_client, logger_dev)
         get_screenshots(logger_client, logger_dev)
         
         # Fills in empty output sheet cells after quotes
