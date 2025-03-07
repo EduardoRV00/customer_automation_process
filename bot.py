@@ -34,7 +34,8 @@ from src.tasks.fill_api_data_to_processed import *
 from src.utils.error_handling import *
 from openpyxl import load_workbook
 from src.tasks.rpa_challenge_data_fill import *
-from tasks import send_email
+from src.tasks.send_email import send_email
+from src.utils.email_templates import *
 BotMaestroSDK.RAISE_NOT_CONNECTED = False
 
 
@@ -115,7 +116,10 @@ def main():
         # You MUST invoke the stop_browser to avoid
         # leaving instances of the webdriver open
         bot.stop_browser()
-        send_email(output_sheet)
+        subject = email_success_subject()
+        body = email_success_body()
+        send_email(output_sheet, subject, body, logger_client, logger_dev)
+
         # Uncomment to mark this task as finished on BotMaestro
         # maestro.finish_task(
         #     task_id=execution.task_id,
