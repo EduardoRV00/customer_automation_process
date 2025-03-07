@@ -34,6 +34,7 @@ from src.tasks.fill_api_data_to_processed import *
 from src.utils.error_handling import *
 from openpyxl import load_workbook
 from src.tasks.rpa_challenge_data_fill import *
+from tasks import send_email
 BotMaestroSDK.RAISE_NOT_CONNECTED = False
 
 
@@ -107,7 +108,7 @@ def main():
         # You MUST invoke the stop_browser to avoid
         # leaving instances of the webdriver open
         bot.stop_browser()
-        
+        send_email(output_sheet)
         # Uncomment to mark this task as finished on BotMaestro
         # maestro.finish_task(
         #     task_id=execution.task_id,
@@ -117,6 +118,7 @@ def main():
         #     processed_items=0,
         #     failed_items=0
         # )
+        
     
     except Exception as e:
         logging.warning(f"Erro fatal durante a execução do bot: {e}")
