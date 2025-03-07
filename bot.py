@@ -82,7 +82,7 @@ def main():
         
         fill_rpa_challenge(bot, output_sheet)
 
-
+        #performs quote on the correios website
         open_correios_site(bot, logger_client, logger_dev)
         logger_client.info("Inicia busca de cotação dos Correios.")
         get_screenshots(logger_client, logger_dev)
@@ -106,7 +106,6 @@ def main():
         # Fills in empty output sheet cells after quotes
         fill_missing_values(output_sheet)
 
-        # Wait 3 seconds before closing
         logger_client.info('Finalizando execução do bot...')
         logger_client.info("Processo Finalizado.")
         # bot.wait(3000)

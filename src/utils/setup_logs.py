@@ -27,7 +27,7 @@ def create_daily_logs():
 
 def generate_log_filenames():
    """
-   Generates the log file names for client and development.
+   Generates the log file names for the client and the developer.
    """
    try:
     daily_log_dir_cl, daily_log_dir_dev = create_daily_logs()
@@ -45,7 +45,7 @@ def generate_log_filenames():
 
 def setup_logging():
   """
-  Configures loggers for client and development.
+  Sets up loggers for client and developer.
   """
   try:
     log_cli_filename, log_dev_filename = generate_log_filenames()
@@ -77,7 +77,7 @@ def setup_logging():
 
 def get_screenshots(logger_client, logger_dev):
    """
-   Captures screenshot and saves it in the client and developer log directories.
+   Capture the screen and save it in the client and developer logs.
    """
    try:
       daily_log_dir_cl, daily_log_dir_dev = create_daily_logs()
