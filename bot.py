@@ -37,9 +37,9 @@ BotMaestroSDK.RAISE_NOT_CONNECTED = False
 
 
 def main():
-    setup_logging()
-    logging.info("Início da execução do processo.")
-    logging.info("Processando dados...")
+    logger_client, logger_dev = setup_logging()
+    logger_client.info("Início da execução do processo.")
+    logger_dev.info("Processo iniciado pelo bot.")
     # Runner passes the server url, the id of the task being executed,
     # the access token and the parameters that this task receives (when applicable).
     maestro = BotMaestroSDK.from_sys_args()
@@ -63,11 +63,10 @@ def main():
 
     # Implement here your logic...
     
-    
     # Creates the output sheet and assigns the file path to the variable output_sheet
     output_sheet = create_output_sheet()
 
-    process_spreadsheet(output_sheet)
+    process_spreadsheet(output_sheet, logger_client, logger_dev)
     
     # Fill output_sheet with API consultation data
     data_fill_processed(output_sheet)
@@ -77,14 +76,18 @@ def main():
 
     #Fill Rpa challenge text boxes.
     open_rpa_challenge_website(bot)
+    get_screenshots(logger_client, logger_dev)
     
     fill_rpa_challenge(bot, output_sheet)
 
-    open_correios_site(bot)
-    logging.info("Inicia busca de cotação dos Correios.")
-    processed_output_sheet_quote_correios(bot, output_sheet)
-    logging.info("Finaliza busca de cotação dos Correios.")
-    logging.info("Fecha site dos correios no navegador.")
+
+    open_correios_site(bot, logger_client, logger_dev)
+    logger_client.info("Inicia busca de cotação dos Correios.")
+    get_screenshots(logger_client, logger_dev)
+    processed_output_sheet_quote_correios(bot, output_sheet, logger_client, logger_dev)
+    logger_client.info("Finaliza busca de cotação dos Correios.")
+    get_screenshots(logger_client, logger_dev)
+    logger_client.info("Fecha site dos correios no navegador.")
     bot.stop_browser()
 
     
@@ -93,20 +96,17 @@ def main():
     
     # Performs quote on the jadlog website
     open_jadlog_site(bot)
+    get_screenshots(logger_client, logger_dev)
     # Performs quote on the jadlog website
     jadlog_quote(output_sheet, bot)
+    get_screenshots(logger_client, logger_dev)
     
-    
-
-    
-    
-
     # Fills in empty output sheet cells after quotes
     fill_missing_values(output_sheet)
 
     # Wait 3 seconds before closing
-    logging.info('Finalizando execução do bot...')
-    logging.info("Processo Finalizado.")
+    logger_client.info('Finalizando execução do bot...')
+    logger_client.info("Processo Finalizado.")
     # bot.wait(3000)
 
     # Finish and clean up the Web Browser
