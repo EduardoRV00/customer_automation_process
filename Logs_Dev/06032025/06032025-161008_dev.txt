@@ -1,0 +1,244 @@
+2025-03-06 16:10:08,491 - INFO - Processo iniciado pelo bot.
+2025-03-06 16:10:13,681 - INFO - Imagem capturada e salva no log do desenvolvedor.
+2025-03-06 16:10:19,667 - ERROR - Erro ao abrir site no navegador. Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=133.0.6943.142)
+Stacktrace:
+	GetHandleVerifier [0x00007FF777776EE5+28773]
+	(No symbol) [0x00007FF7776E25D0]
+	(No symbol) [0x00007FF777578FAA]
+	(No symbol) [0x00007FF777551573]
+	(No symbol) [0x00007FF7775FEE3E]
+	(No symbol) [0x00007FF77761EFE2]
+	(No symbol) [0x00007FF7775F7023]
+	(No symbol) [0x00007FF7775BFF5E]
+	(No symbol) [0x00007FF7775C11E3]
+	GetHandleVerifier [0x00007FF777AC422D+3490733]
+	GetHandleVerifier [0x00007FF777ADBA13+3586963]
+	GetHandleVerifier [0x00007FF777AD144D+3544525]
+	GetHandleVerifier [0x00007FF77783C9AA+838442]
+	(No symbol) [0x00007FF7776ED01F]
+	(No symbol) [0x00007FF7776E95E4]
+	(No symbol) [0x00007FF7776E9786]
+	(No symbol) [0x00007FF7776D8CB9]
+	BaseThreadInitThunk [0x00007FF89A797374+20]
+	RtlUserThreadStart [0x00007FF89B7BCC91+33]
+
+2025-03-06 16:10:19,748 - INFO - Imagem capturada e salva no log do desenvolvedor.
+2025-03-06 16:10:19,771 - ERROR - Erro ao preencher cotação dos correios: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=133.0.6943.142)
+Stacktrace:
+	GetHandleVerifier [0x00007FF777776EE5+28773]
+	(No symbol) [0x00007FF7776E25D0]
+	(No symbol) [0x00007FF777578FAA]
+	(No symbol) [0x00007FF777551573]
+	(No symbol) [0x00007FF7775FEE3E]
+	(No symbol) [0x00007FF77761EFE2]
+	(No symbol) [0x00007FF7775F7023]
+	(No symbol) [0x00007FF7775BFF5E]
+	(No symbol) [0x00007FF7775C11E3]
+	GetHandleVerifier [0x00007FF777AC422D+3490733]
+	GetHandleVerifier [0x00007FF777ADBA13+3586963]
+	GetHandleVerifier [0x00007FF777AD144D+3544525]
+	GetHandleVerifier [0x00007FF77783C9AA+838442]
+	(No symbol) [0x00007FF7776ED01F]
+	(No symbol) [0x00007FF7776E95E4]
+	(No symbol) [0x00007FF7776E9786]
+	(No symbol) [0x00007FF7776D8CB9]
+	BaseThreadInitThunk [0x00007FF89A797374+20]
+	RtlUserThreadStart [0x00007FF89B7BCC91+33]
+
+2025-03-06 16:10:19,852 - ERROR - Erro ao preencher cotação dos correios: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=133.0.6943.142)
+Stacktrace:
+	GetHandleVerifier [0x00007FF777776EE5+28773]
+	(No symbol) [0x00007FF7776E25D0]
+	(No symbol) [0x00007FF777578FAA]
+	(No symbol) [0x00007FF777551573]
+	(No symbol) [0x00007FF7775FEE3E]
+	(No symbol) [0x00007FF77761EFE2]
+	(No symbol) [0x00007FF7775F7023]
+	(No symbol) [0x00007FF7775BFF5E]
+	(No symbol) [0x00007FF7775C11E3]
+	GetHandleVerifier [0x00007FF777AC422D+3490733]
+	GetHandleVerifier [0x00007FF777ADBA13+3586963]
+	GetHandleVerifier [0x00007FF777AD144D+3544525]
+	GetHandleVerifier [0x00007FF77783C9AA+838442]
+	(No symbol) [0x00007FF7776ED01F]
+	(No symbol) [0x00007FF7776E95E4]
+	(No symbol) [0x00007FF7776E9786]
+	(No symbol) [0x00007FF7776D8CB9]
+	BaseThreadInitThunk [0x00007FF89A797374+20]
+	RtlUserThreadStart [0x00007FF89B7BCC91+33]
+
+2025-03-06 16:10:19,892 - ERROR - Erro ao preencher cotação dos correios: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=133.0.6943.142)
+Stacktrace:
+	GetHandleVerifier [0x00007FF777776EE5+28773]
+	(No symbol) [0x00007FF7776E25D0]
+	(No symbol) [0x00007FF777578FAA]
+	(No symbol) [0x00007FF777551573]
+	(No symbol) [0x00007FF7775FEE3E]
+	(No symbol) [0x00007FF77761EFE2]
+	(No symbol) [0x00007FF7775F7023]
+	(No symbol) [0x00007FF7775BFF5E]
+	(No symbol) [0x00007FF7775C11E3]
+	GetHandleVerifier [0x00007FF777AC422D+3490733]
+	GetHandleVerifier [0x00007FF777ADBA13+3586963]
+	GetHandleVerifier [0x00007FF777AD144D+3544525]
+	GetHandleVerifier [0x00007FF77783C9AA+838442]
+	(No symbol) [0x00007FF7776ED01F]
+	(No symbol) [0x00007FF7776E95E4]
+	(No symbol) [0x00007FF7776E9786]
+	(No symbol) [0x00007FF7776D8CB9]
+	BaseThreadInitThunk [0x00007FF89A797374+20]
+	RtlUserThreadStart [0x00007FF89B7BCC91+33]
+
+2025-03-06 16:10:19,893 - ERROR - Erro ao preencher cotação dos correios: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=133.0.6943.142)
+Stacktrace:
+	GetHandleVerifier [0x00007FF777776EE5+28773]
+	(No symbol) [0x00007FF7776E25D0]
+	(No symbol) [0x00007FF777578FAA]
+	(No symbol) [0x00007FF777551573]
+	(No symbol) [0x00007FF7775FEE3E]
+	(No symbol) [0x00007FF77761EFE2]
+	(No symbol) [0x00007FF7775F7023]
+	(No symbol) [0x00007FF7775BFF5E]
+	(No symbol) [0x00007FF7775C11E3]
+	GetHandleVerifier [0x00007FF777AC422D+3490733]
+	GetHandleVerifier [0x00007FF777ADBA13+3586963]
+	GetHandleVerifier [0x00007FF777AD144D+3544525]
+	GetHandleVerifier [0x00007FF77783C9AA+838442]
+	(No symbol) [0x00007FF7776ED01F]
+	(No symbol) [0x00007FF7776E95E4]
+	(No symbol) [0x00007FF7776E9786]
+	(No symbol) [0x00007FF7776D8CB9]
+	BaseThreadInitThunk [0x00007FF89A797374+20]
+	RtlUserThreadStart [0x00007FF89B7BCC91+33]
+
+2025-03-06 16:10:19,934 - ERROR - Erro ao preencher cotação dos correios: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=133.0.6943.142)
+Stacktrace:
+	GetHandleVerifier [0x00007FF777776EE5+28773]
+	(No symbol) [0x00007FF7776E25D0]
+	(No symbol) [0x00007FF777578FAA]
+	(No symbol) [0x00007FF777551573]
+	(No symbol) [0x00007FF7775FEE3E]
+	(No symbol) [0x00007FF77761EFE2]
+	(No symbol) [0x00007FF7775F7023]
+	(No symbol) [0x00007FF7775BFF5E]
+	(No symbol) [0x00007FF7775C11E3]
+	GetHandleVerifier [0x00007FF777AC422D+3490733]
+	GetHandleVerifier [0x00007FF777ADBA13+3586963]
+	GetHandleVerifier [0x00007FF777AD144D+3544525]
+	GetHandleVerifier [0x00007FF77783C9AA+838442]
+	(No symbol) [0x00007FF7776ED01F]
+	(No symbol) [0x00007FF7776E95E4]
+	(No symbol) [0x00007FF7776E9786]
+	(No symbol) [0x00007FF7776D8CB9]
+	BaseThreadInitThunk [0x00007FF89A797374+20]
+	RtlUserThreadStart [0x00007FF89B7BCC91+33]
+
+2025-03-06 16:10:19,935 - ERROR - Erro ao preencher cotação dos correios: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=133.0.6943.142)
+Stacktrace:
+	GetHandleVerifier [0x00007FF777776EE5+28773]
+	(No symbol) [0x00007FF7776E25D0]
+	(No symbol) [0x00007FF777578FAA]
+	(No symbol) [0x00007FF777551573]
+	(No symbol) [0x00007FF7775FEE3E]
+	(No symbol) [0x00007FF77761EFE2]
+	(No symbol) [0x00007FF7775F7023]
+	(No symbol) [0x00007FF7775BFF5E]
+	(No symbol) [0x00007FF7775C11E3]
+	GetHandleVerifier [0x00007FF777AC422D+3490733]
+	GetHandleVerifier [0x00007FF777ADBA13+3586963]
+	GetHandleVerifier [0x00007FF777AD144D+3544525]
+	GetHandleVerifier [0x00007FF77783C9AA+838442]
+	(No symbol) [0x00007FF7776ED01F]
+	(No symbol) [0x00007FF7776E95E4]
+	(No symbol) [0x00007FF7776E9786]
+	(No symbol) [0x00007FF7776D8CB9]
+	BaseThreadInitThunk [0x00007FF89A797374+20]
+	RtlUserThreadStart [0x00007FF89B7BCC91+33]
+
+2025-03-06 16:10:19,936 - ERROR - Erro ao preencher cotação dos correios: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=133.0.6943.142)
+Stacktrace:
+	GetHandleVerifier [0x00007FF777776EE5+28773]
+	(No symbol) [0x00007FF7776E25D0]
+	(No symbol) [0x00007FF777578FAA]
+	(No symbol) [0x00007FF777551573]
+	(No symbol) [0x00007FF7775FEE3E]
+	(No symbol) [0x00007FF77761EFE2]
+	(No symbol) [0x00007FF7775F7023]
+	(No symbol) [0x00007FF7775BFF5E]
+	(No symbol) [0x00007FF7775C11E3]
+	GetHandleVerifier [0x00007FF777AC422D+3490733]
+	GetHandleVerifier [0x00007FF777ADBA13+3586963]
+	GetHandleVerifier [0x00007FF777AD144D+3544525]
+	GetHandleVerifier [0x00007FF77783C9AA+838442]
+	(No symbol) [0x00007FF7776ED01F]
+	(No symbol) [0x00007FF7776E95E4]
+	(No symbol) [0x00007FF7776E9786]
+	(No symbol) [0x00007FF7776D8CB9]
+	BaseThreadInitThunk [0x00007FF89A797374+20]
+	RtlUserThreadStart [0x00007FF89B7BCC91+33]
+
+2025-03-06 16:10:20,015 - ERROR - Erro ao preencher cotação dos correios: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=133.0.6943.142)
+Stacktrace:
+	GetHandleVerifier [0x00007FF777776EE5+28773]
+	(No symbol) [0x00007FF7776E25D0]
+	(No symbol) [0x00007FF777578FAA]
+	(No symbol) [0x00007FF777551573]
+	(No symbol) [0x00007FF7775FEE3E]
+	(No symbol) [0x00007FF77761EFE2]
+	(No symbol) [0x00007FF7775F7023]
+	(No symbol) [0x00007FF7775BFF5E]
+	(No symbol) [0x00007FF7775C11E3]
+	GetHandleVerifier [0x00007FF777AC422D+3490733]
+	GetHandleVerifier [0x00007FF777ADBA13+3586963]
+	GetHandleVerifier [0x00007FF777AD144D+3544525]
+	GetHandleVerifier [0x00007FF77783C9AA+838442]
+	(No symbol) [0x00007FF7776ED01F]
+	(No symbol) [0x00007FF7776E95E4]
+	(No symbol) [0x00007FF7776E9786]
+	(No symbol) [0x00007FF7776D8CB9]
+	BaseThreadInitThunk [0x00007FF89A797374+20]
+	RtlUserThreadStart [0x00007FF89B7BCC91+33]
+
+2025-03-06 16:10:20,055 - ERROR - Erro ao preencher cotação dos correios: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=133.0.6943.142)
+Stacktrace:
+	GetHandleVerifier [0x00007FF777776EE5+28773]
+	(No symbol) [0x00007FF7776E25D0]
+	(No symbol) [0x00007FF777578FAA]
+	(No symbol) [0x00007FF777551573]
+	(No symbol) [0x00007FF7775FEE3E]
+	(No symbol) [0x00007FF77761EFE2]
+	(No symbol) [0x00007FF7775F7023]
+	(No symbol) [0x00007FF7775BFF5E]
+	(No symbol) [0x00007FF7775C11E3]
+	GetHandleVerifier [0x00007FF777AC422D+3490733]
+	GetHandleVerifier [0x00007FF777ADBA13+3586963]
+	GetHandleVerifier [0x00007FF777AD144D+3544525]
+	GetHandleVerifier [0x00007FF77783C9AA+838442]
+	(No symbol) [0x00007FF7776ED01F]
+	(No symbol) [0x00007FF7776E95E4]
+	(No symbol) [0x00007FF7776E9786]
+	(No symbol) [0x00007FF7776D8CB9]
+	BaseThreadInitThunk [0x00007FF89A797374+20]
+	RtlUserThreadStart [0x00007FF89B7BCC91+33]
+
+2025-03-06 16:10:20,108 - INFO - Imagem capturada e salva no log do desenvolvedor.
