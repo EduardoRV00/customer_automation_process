@@ -9,7 +9,7 @@ import sys
 import pyautogui
 
 from config import ERROR_DIR
-from tasks.send_email import send_email
+from src.tasks.send_email import send_email
 from src.utils.email_templates import *
 
 def validate_cep(output_sheet):
