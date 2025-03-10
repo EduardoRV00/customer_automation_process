@@ -6,6 +6,7 @@ from config import *
 from src.tasks.processed_data import *
 import pandas as pd
 import logging
+from src.utils.error_handling import *
 
 
 def open_rpa_challenge_website(bot, logger_client, logger_dev):

@@ -5,7 +5,7 @@ from config import *
 from openpyxl import load_workbook
 from datetime import datetime, timedelta
 from src.utils.manipulate_spreadsheet import *
-from utils.error_handling import handle_error
+from src.utils.error_handling import *
 
 
 def open_correios_site(bot, logger_client, logger_dev):

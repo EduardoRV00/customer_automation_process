@@ -4,7 +4,7 @@ import os
 from email.message import EmailMessage
 from dotenv import load_dotenv
 
-from utils.error_handling import handle_error
+from src.utils.error_handling import *
 
 # Load environment variables from .env file
 load_dotenv()
