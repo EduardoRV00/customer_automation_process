@@ -9,8 +9,6 @@ CHROME_DRIVER = r'C:\customer_automation_process\src\utils\driver\chromedriver.e
 
 
 #Path to log
-# LOG_DIR = os.path.join(os.getcwd(), "Logs")
-# LOG_DEV = os.path.join(os.getcwd(), "Logs_Dev")
 LOG_DIR = "C:/customer_automation_process/Logs"
 LOG_DEV = "C:/customer_automation_process/Logs_Dev"
 ERROR_DIR = "C:/customer_automation_process/Errors"

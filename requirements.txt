@@ -3,6 +3,9 @@ botcity-maestro-sdk>=0.5.1,<1.0
 requests
 pandas
 openpyxl
+python-dotenv
+pyautogui
+setuptools
 # Uncomment to use botcity-utils
 # botcity-utils>=0.1.2
 
