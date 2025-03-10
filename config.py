@@ -9,9 +9,9 @@ CHROME_DRIVER = r'C:\customer_automation_process\src\utils\driver\chromedriver.e
 
 
 #Path to log
-LOG_DIR = "C:/customer_automation_process/Logs"
-LOG_DEV = "C:/customer_automation_process/Logs_Dev"
-ERROR_DIR = "C:/customer_automation_process/Errors"
+LOG_DIR = r"C:\customer_automation_process\Logs"
+LOG_DEV = r"C:\customer_automation_process\Logs_Dev"
+ERROR_DIR = r"C:\customer_automation_process\Errors"
 
 URL_CORREIOS = "https://www2.correios.com.br/sistemas/precosPrazos/"
 URL_JADLOG = "https://www.jadlog.com.br/jadlog/simulacao"
