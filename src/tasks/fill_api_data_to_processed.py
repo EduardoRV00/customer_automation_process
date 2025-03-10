@@ -2,7 +2,7 @@ import pandas as pd
 from openpyxl import load_workbook
 from src.services.api_client import *
 from src.utils.setup_logs import *
-from utils.error_handling import handle_error
+from src.utils.error_handling import *
 
 def data_fill_processed(output_sheet, logger_client, logger_dev):
     """

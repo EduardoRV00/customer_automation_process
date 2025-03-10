@@ -7,7 +7,7 @@ import logging
 import sys
 import os
 
-from utils.error_handling import handle_error
+from src.utils.error_handling import *
 
 # Add the root folder to sys.path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
