@@ -6,6 +6,8 @@ from openpyxl.formatting.rule import CellIsRule
 import os
 import logging
 
+from src.utils.error_handling import handle_error
+
 def create_output_sheet(): 
     """
     Creates an Excel sheet with predefined headers and saves it to a specified directory.
@@ -71,7 +73,10 @@ def create_output_sheet():
         return output_sheet
     
     except Exception as e:
+        # Log the error and call the error handling function
         logging.info(f"Erro ao criar planilha de saída: {e}")
+        # handle_error("Processamento de dados", "Error ao criar a tabela de saída", logger_client, logger_dev)
+
         
 def fill_data_b4_rpachallenge(output_sheet):
     '''
@@ -94,7 +99,10 @@ def fill_data_b4_rpachallenge(output_sheet):
         wb.save(output_sheet)
         
     except Exception as e:
-        logging.info(f"Erro ao preencher células em branco na planilha de saída: {e}")   
+        #Log the error and call the error handling function
+        logging.info(f"Erro ao preencher células em branco na planilha de saída: {e}") 
+        # handle_error("Processamento de dados", "Error ao criar a tabela de saída", logger_client, logger_dev)
+  
         
 def fill_missing_values(output_sheet):
     '''
@@ -121,4 +129,7 @@ def fill_missing_values(output_sheet):
         wb.save(output_sheet)
         
     except Exception as e:
-        logging.warning(f"Erro ao preencher células em branco na planilha de saída: {e}")   
+        # Log the error and call the error handling function
+        logging.warning(f"Erro ao preencher células em branco na planilha de saída: {e}")
+        # handle_error("Processamento de dados", "Preenchimento dos campos perdidos", logger_client, logger_dev)
+   

@@ -5,6 +5,7 @@ from config import *
 from openpyxl import load_workbook
 from datetime import datetime, timedelta
 from src.utils.manipulate_spreadsheet import *
+from utils.error_handling import handle_error
 
 
 def open_correios_site(bot, logger_client, logger_dev):
@@ -122,7 +123,9 @@ def save_quote_and_delivery(output_sheet, row, quote_value, delivery_date, logge
     logger_client.info(msg_save_quote), logger_dev.info(msg_save_quote)
    
   except Exception as e:
+     # Log the error and call the error handling function
      logger_dev.error(f"Erro ao salvar cotação e prazo de entrega: {e}")
+     handle_error("Cotação dos correios", "Cotação dos correios", logger_client, logger_dev)
    
 
 def close_tabs(bot):
@@ -184,5 +187,8 @@ def processed_output_sheet_quote_correios(bot, output_sheet, logger_client, logg
           continue
             
   except Exception as e:
+      # Log the error and call the error handling function
       logger_dev.error(f"Erro ao ler a planilha de saída: {e}")
+      handle_error("Cotação dos correios", "Preenchimento da tabela com a cotação dos correiros", logger_client, logger_dev)
+
 
