@@ -2,6 +2,7 @@ import pandas as pd
 from openpyxl import load_workbook
 from src.services.api_client import *
 from src.utils.setup_logs import *
+from utils.error_handling import handle_error
 
 def data_fill_processed(output_sheet, logger_client, logger_dev):
     """
@@ -83,6 +84,9 @@ def data_fill_processed(output_sheet, logger_client, logger_dev):
         logger_dev.info(msg_sheet)
     
     except Exception as e:
-         logger_dev.error(f"Erro ao preencher a planilha: {e}")
+        # Log the error and call the error handling function
+        logger_dev.error(f"Erro ao preencher a planilha: {e}")
+        handle_error("Preenchimento da planilha", "Error no preenchimento da tabela", logger_client, logger_dev)
+
 
 
