@@ -71,7 +71,7 @@ def main():
         process_spreadsheet(output_sheet, logger_client, logger_dev)
         
         # Fill output_sheet with API consultation data
-        data_fill_processed(output_sheet)
+        data_fill_processed(output_sheet, logger_client, logger_dev)
         
         # Fills in empty output sheet cells
         fill_data_b4_rpachallenge(output_sheet)
