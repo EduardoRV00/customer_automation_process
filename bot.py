@@ -94,14 +94,14 @@ def main():
         body = email_success_body()
         send_email(output_sheet, subject, body, logger_client, logger_dev)
 
-        # maestro.finish_task(
-        #     task_id=execution.task_id,
-        #     status=AutomationTaskFinishStatus.SUCCESS,
-        #     message="Task Finished OK.",
-        #     total_items=0,
-        #     processed_items=0,
-        #     failed_items=0
-        # )
+        maestro.finish_task(
+            task_id=execution.task_id,
+            status=AutomationTaskFinishStatus.SUCCESS,
+            message="Task Finished OK.",
+            total_items=0,
+            processed_items=0,
+            failed_items=0
+        )
         
     
     except Exception as e:
