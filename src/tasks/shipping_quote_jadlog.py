@@ -7,6 +7,8 @@ import logging
 import sys
 import os
 
+from utils.error_handling import handle_error
+
 # Add the root folder to sys.path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 
@@ -126,8 +128,11 @@ def jadlog_quote(output_sheet, bot, logger_client, logger_dev):
             
         
         except Exception as e:
+            # If an error occurs, log the error and try again
             logger_dev.error(f"{try_count}ª tentativa - Erro ao preencher formulário de cotação: {e}") 
             if try_count <3:
                 logger_client.info('Ocorreu um erro na cotação. Reiniciando cotação Jadlog')
             try_count += 1
             bot.refresh()
+            # Call handle_error function to handle exceptions
+            handle_error("Cotação Jadlog", "Erro ao realizar cotação na Jadlog", logger_client, logger_dev)

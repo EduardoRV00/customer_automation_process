@@ -44,7 +44,11 @@ def validate_cep(output_sheet):
     except Exception as e:
         logging.warning(f"Erro ao validar CEPs na planilha de saída: {e}")   
 
-
+# Calling handle_error for Contingency/Fallbacks
+# If an unexpected error occurs during process execution, the bot will:
+# 1. Capture a screenshot and save it in the error directory.
+# 2. Log the failure in both client and developer logs.
+# 3. Send an email notification with error details and the screenshot attached.
 def handle_error(process_name, task_name, logger_client, logger_dev):
  
     # Handle unexpected errors by capturing a screenshot, logging the error, and notifying via email.

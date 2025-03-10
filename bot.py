@@ -132,8 +132,11 @@ def main():
         
     
     except Exception as e:
+        # Log the error and call the error handling function
         logger_dev.error(f"Erro fatal durante a execução do bot: {e}")
-        logging.info("Finalizando a execução do bot") 
+        logging.info("Finalizando a execução do bot")
+        handle_error("Execução da automação completa", "Erro durante a execução do bot(Execução geral do bot)", logger_client, logger_dev)
+
 
 
 def not_found(label):

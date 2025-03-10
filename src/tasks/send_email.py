@@ -4,6 +4,8 @@ import os
 from email.message import EmailMessage
 from dotenv import load_dotenv
 
+from utils.error_handling import handle_error
+
 # Load environment variables from .env file
 load_dotenv()
 
@@ -71,9 +73,11 @@ def send_email(output_file, subject, body, logger_client,logger_dev):
         logger_client.info(log_msg_smtp_close)
         server.quit()
     except Exception as e:
+        # Log error and call handle_error
         log_msg_error = "Erro ao enviar e-mails. Consulte os logs do desenvolvedor para mais detalhes."
         logger_client.info(log_msg_error)
         logger_dev.error(f"Erro ao enviar e-mails: {e}")
+        handle_error("Envio de e-mail", "Envio de e-mail", logger_client, logger_dev)
 
 
 if __name__ == "__main__":
