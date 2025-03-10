@@ -5,3 +5,6 @@ Customer_Registration_and_New_Orders_Quote/*
 __pycache__/
 venv/
 downloads.htm.crdownload
+
+requirements.txt
+Errors/*

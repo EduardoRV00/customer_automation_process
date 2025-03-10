@@ -6,6 +6,7 @@ from config import *
 from src.tasks.processed_data import *
 import pandas as pd
 import logging
+from src.utils.error_handling import *
 
 
 def open_rpa_challenge_website(bot, logger_client, logger_dev):
@@ -51,7 +52,7 @@ def fill_rpa_challenge(bot, output_sheet, logger_client, logger_dev):
         
         for index, row in entry_df.iterrows():
             cnpj = str(row["CNPJ"])
-            info = api_get(cnpj)
+            info = api_get(cnpj, logger_client, logger_dev)
             
             if info is None:
                 break
