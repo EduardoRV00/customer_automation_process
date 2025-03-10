@@ -114,7 +114,9 @@ def fill_rpa_challenge(bot, output_sheet, logger_client, logger_dev):
             logger_dev.info(msg_submit)
     
     except Exception as e:
-        logger_dev.error(f"Error no preenchimento de dados no RPA Challenge")
+        # Log the error and handle it
+        logger_dev.error(f"Error no preenchimento de dados no RPA Challenge: {e}")
+        handle_error("Preenchimento de dados(RPA Challenge)", "Error no preenchimento de dados no RPA Challenges", logger_client, logger_dev)
     
      
         
