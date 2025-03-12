@@ -121,6 +121,8 @@ def jadlog_quote(output_sheet, bot, logger_client, logger_dev):
                 # Attributes the value of the quote to the cell in the sheet
                 ws[f'N{row.name + 2}'] = resultado_float
                 wb.save(output_sheet)
+                log_message = f'Valor da cotação salvo na linha {row.name + 2}'
+                logger_client.info(log_message), logger_dev.info(log_message)
                 try_count = 5 # Break the loop if the quote succeeded
 
             log_message = 'Cotações realizadas com sucesso'
