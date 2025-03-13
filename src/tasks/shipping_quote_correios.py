@@ -148,6 +148,9 @@ def processed_output_sheet_quote_correios(bot, output_sheet, logger_client, logg
     wb = load_workbook(output_sheet)
     ws = wb.active
 
+    msg_quote_correios = "Inicia busca de cotação dos Correios."
+    logger_client.info(msg_quote_correios), logger_dev.info(msg_quote_correios)
+
     for row_index, row in enumerate(ws.iter_rows(min_row=2, values_only=True), start=2):
         dest_zip = row[4]
         value_order = row[8]
@@ -185,6 +188,9 @@ def processed_output_sheet_quote_correios(bot, output_sheet, logger_client, logg
         except Exception as e:
           logger_dev.error(f"Erro ao converter dimensões na linha {row_index}: {e}.")
           continue
+
+    msg_ends_quote_correios = "Finaliza busca de cotação dos Correios."
+    logger_client.info(msg_ends_quote_correios), logger_dev.info(msg_ends_quote_correios)
             
   except Exception as e:
       # Log the error and call the error handling function

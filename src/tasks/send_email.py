@@ -17,14 +17,14 @@ EMAIL_PASS = os.getenv("EMAIL_PASS")  # Gmail app password
 
 # List of recipients
 recipients = [
-    # "ghislaine.latorra.pb@compasso.com.br",
+    "ghislaine.latorra.pb@compasso.com.br",
     # "guilherme.sartori.pb@compasso.com.br",
     # "marcos.eduardo.pb@compasso.com.br",
     # "luana.costa@compasso.com.br",
     # "rafael.vizzotto@compasso.com.br",
     # "aline.santos@compasso.com.br",
-    "eduardo.rochavargas@outlook.com",
-    "eduardo.vargas.pb@compasso.com.br"
+    # "eduardo.rochavargas@outlook.com",
+    # "eduardo.vargas.pb@compasso.com.br"
 ]
 
 # Function to send an email with an attachment
