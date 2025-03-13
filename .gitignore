@@ -1,0 +1,10 @@
+# Logs/*
+# Logs_Dev/*
+src/utils/data/processed/Customer_Registration_and_New_Orders_Quote/*
+Customer_Registration_and_New_Orders_Quote/*
+__pycache__/
+venv/
+downloads.htm.crdownload
+
+requirements.txt
+# Errors/*

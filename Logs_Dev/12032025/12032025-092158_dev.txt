@@ -1,0 +1,210 @@
+2025-03-12 09:21:58,204 - INFO - Processo iniciado pelo bot.
+2025-03-12 09:21:58,452 - INFO - Planilha de entrada carregada com sucesso.
+2025-03-12 09:21:58,452 - INFO - Preenchendo a planilha de saída com os dados da planilha de entrada...
+2025-03-12 09:21:58,467 - INFO - Planilha de saída preenchida com sucesso!
+2025-03-12 09:21:58,467 - INFO - Verifica campos vazios na planilha de entrada.
+2025-03-12 09:21:58,467 - INFO - Acessando planilha de saída para salvar status.
+2025-03-12 09:21:58,489 - INFO - Status salvo com sucesso na célula Q3
+2025-03-12 09:21:58,489 - INFO - Acessando planilha de saída para salvar status.
+2025-03-12 09:21:58,529 - INFO - Status salvo com sucesso na célula Q13
+2025-03-12 09:21:58,529 - INFO - Acessando planilha de saída para salvar status.
+2025-03-12 09:21:58,560 - INFO - Status salvo com sucesso na célula Q16
+2025-03-12 09:21:58,560 - INFO - Lendo arquivo Excel de entrada
+2025-03-12 09:21:58,573 - INFO - Processando CNPJs e consultando API
+2025-03-12 09:21:58,574 - INFO - Armazenando informações em formato de Dict chave : valor
+2025-03-12 09:21:58,574 - INFO - Realizando request em Brasil API 
+2025-03-12 09:21:58,668 - INFO - Dados do CNPJ 8114089000129 preenchidos com sucesso
+2025-03-12 09:21:58,668 - INFO - Realizando request em Brasil API 
+2025-03-12 09:21:58,752 - INFO - Dados do CNPJ 25144592000146 preenchidos com sucesso
+2025-03-12 09:21:58,752 - INFO - Realizando request em Brasil API 
+2025-03-12 09:21:58,818 - INFO - Dados do CNPJ 2415536000101 preenchidos com sucesso
+2025-03-12 09:21:58,818 - INFO - Realizando request em Brasil API 
+2025-03-12 09:21:58,906 - INFO - Dados do CNPJ 58337668000109 preenchidos com sucesso
+2025-03-12 09:21:58,906 - INFO - Realizando request em Brasil API 
+2025-03-12 09:21:58,984 - INFO - Dados do CNPJ 5378545000150 preenchidos com sucesso
+2025-03-12 09:21:58,984 - INFO - Realizando request em Brasil API 
+2025-03-12 09:21:59,060 - INFO - Dados do CNPJ 17315744000106 preenchidos com sucesso
+2025-03-12 09:21:59,060 - INFO - Realizando request em Brasil API 
+2025-03-12 09:21:59,137 - INFO - Dados do CNPJ 2930089000110 preenchidos com sucesso
+2025-03-12 09:21:59,137 - INFO - Realizando request em Brasil API 
+2025-03-12 09:21:59,206 - INFO - Dados do CNPJ 2287137000102 preenchidos com sucesso
+2025-03-12 09:21:59,206 - INFO - Realizando request em Brasil API 
+2025-03-12 09:21:59,407 - INFO - Dados do CNPJ 7251445000193 preenchidos com sucesso
+2025-03-12 09:21:59,407 - INFO - Realizando request em Brasil API 
+2025-03-12 09:21:59,469 - INFO - Dados do CNPJ 6914095000135 preenchidos com sucesso
+2025-03-12 09:21:59,469 - INFO - Realizando request em Brasil API 
+2025-03-12 09:21:59,538 - INFO - Dados do CNPJ 31078625000108 preenchidos com sucesso
+2025-03-12 09:21:59,538 - INFO - Realizando request em Brasil API 
+2025-03-12 09:21:59,623 - INFO - Dados do CNPJ 43916072000196 preenchidos com sucesso
+2025-03-12 09:21:59,623 - INFO - Realizando request em Brasil API 
+2025-03-12 09:21:59,707 - WARNING - Erro ao consultar o CNPJ 80671425000161: 404 Client Error: Not Found for url: https://brasilapi.com.br/api/cnpj/v1/80671425000161
+2025-03-12 09:21:59,707 - INFO - Dados do CNPJ 80671425000161 preenchidos com sucesso
+2025-03-12 09:21:59,707 - INFO - Realizando request em Brasil API 
+2025-03-12 09:21:59,773 - INFO - Dados do CNPJ 49802351000105 preenchidos com sucesso
+2025-03-12 09:21:59,773 - INFO - Realizando request em Brasil API 
+2025-03-12 09:21:59,839 - INFO - Dados do CNPJ 32507961000183 preenchidos com sucesso
+2025-03-12 09:21:59,839 - INFO - Realizando request em Brasil API 
+2025-03-12 09:21:59,924 - INFO - Dados do CNPJ 45628701000108 preenchidos com sucesso
+2025-03-12 09:21:59,939 - INFO - Planilha preenchida com sucesso!
+2025-03-12 09:22:03,207 - INFO - Abre site do Rpa Challenge.
+2025-03-12 09:22:03,252 - INFO - Imagem capturada e salva no log do desenvolvedor.
+2025-03-12 09:22:03,252 - INFO - Processando CNPJs e consultando API
+2025-03-12 09:22:03,268 - INFO - Realizando request em Brasil API 
+2025-03-12 09:22:03,429 - INFO - Preenchimento de primeiro nome, com razão social.
+2025-03-12 09:22:03,479 - INFO - Preenchimento de ultimo nome com situação cadastral.
+2025-03-12 09:22:03,532 - INFO - Preenchimento de nome da empresa com nome fantasia.
+2025-03-12 09:22:03,585 - INFO - Preenchimento de cargo na empresa com identificador matriz/filial
+2025-03-12 09:22:03,660 - INFO - Preenchimento de endereço
+2025-03-12 09:22:03,706 - INFO - Preenchimento de e-mail
+2025-03-12 09:22:03,765 - INFO - Preenchimento de telefone celular
+2025-03-12 09:22:03,803 - INFO - Click de Submit
+2025-03-12 09:22:03,803 - INFO - Realizando request em Brasil API 
+2025-03-12 09:22:03,989 - INFO - Preenchimento de primeiro nome, com razão social.
+2025-03-12 09:22:04,026 - INFO - Preenchimento de ultimo nome com situação cadastral.
+2025-03-12 09:22:04,079 - INFO - Preenchimento de nome da empresa com nome fantasia.
+2025-03-12 09:22:04,132 - INFO - Preenchimento de cargo na empresa com identificador matriz/filial
+2025-03-12 09:22:04,213 - INFO - Preenchimento de endereço
+2025-03-12 09:22:04,252 - INFO - Preenchimento de e-mail
+2025-03-12 09:22:04,306 - INFO - Preenchimento de telefone celular
+2025-03-12 09:22:04,332 - INFO - Click de Submit
+2025-03-12 09:22:04,332 - INFO - Realizando request em Brasil API 
+2025-03-12 09:22:04,496 - INFO - Preenchimento de primeiro nome, com razão social.
+2025-03-12 09:22:04,532 - INFO - Preenchimento de ultimo nome com situação cadastral.
+2025-03-12 09:22:04,586 - INFO - Preenchimento de nome da empresa com nome fantasia.
+2025-03-12 09:22:04,626 - INFO - Preenchimento de cargo na empresa com identificador matriz/filial
+2025-03-12 09:22:04,697 - INFO - Preenchimento de endereço
+2025-03-12 09:22:04,746 - INFO - Preenchimento de e-mail
+2025-03-12 09:22:04,796 - INFO - Preenchimento de telefone celular
+2025-03-12 09:22:04,826 - INFO - Click de Submit
+2025-03-12 09:22:04,826 - INFO - Realizando request em Brasil API 
+2025-03-12 09:22:04,971 - INFO - Preenchimento de primeiro nome, com razão social.
+2025-03-12 09:22:05,013 - INFO - Preenchimento de ultimo nome com situação cadastral.
+2025-03-12 09:22:05,092 - INFO - Preenchimento de nome da empresa com nome fantasia.
+2025-03-12 09:22:05,150 - INFO - Preenchimento de cargo na empresa com identificador matriz/filial
+2025-03-12 09:22:05,210 - INFO - Preenchimento de endereço
+2025-03-12 09:22:05,253 - INFO - Preenchimento de e-mail
+2025-03-12 09:22:05,297 - INFO - Preenchimento de telefone celular
+2025-03-12 09:22:05,336 - INFO - Click de Submit
+2025-03-12 09:22:05,336 - INFO - Realizando request em Brasil API 
+2025-03-12 09:22:05,477 - INFO - Preenchimento de primeiro nome, com razão social.
+2025-03-12 09:22:05,520 - INFO - Preenchimento de ultimo nome com situação cadastral.
+2025-03-12 09:22:05,560 - INFO - Preenchimento de nome da empresa com nome fantasia.
+2025-03-12 09:22:05,614 - INFO - Preenchimento de cargo na empresa com identificador matriz/filial
+2025-03-12 09:22:05,680 - INFO - Preenchimento de endereço
+2025-03-12 09:22:05,719 - INFO - Preenchimento de e-mail
+2025-03-12 09:22:05,760 - INFO - Preenchimento de telefone celular
+2025-03-12 09:22:05,786 - INFO - Click de Submit
+2025-03-12 09:22:05,786 - INFO - Realizando request em Brasil API 
+2025-03-12 09:22:05,963 - INFO - Preenchimento de primeiro nome, com razão social.
+2025-03-12 09:22:06,000 - INFO - Preenchimento de ultimo nome com situação cadastral.
+2025-03-12 09:22:06,053 - INFO - Preenchimento de nome da empresa com nome fantasia.
+2025-03-12 09:22:06,106 - INFO - Preenchimento de cargo na empresa com identificador matriz/filial
+2025-03-12 09:22:06,160 - INFO - Preenchimento de endereço
+2025-03-12 09:22:06,213 - INFO - Preenchimento de e-mail
+2025-03-12 09:22:06,253 - INFO - Preenchimento de telefone celular
+2025-03-12 09:22:06,280 - INFO - Click de Submit
+2025-03-12 09:22:06,293 - INFO - Realizando request em Brasil API 
+2025-03-12 09:22:06,413 - INFO - Preenchimento de primeiro nome, com razão social.
+2025-03-12 09:22:06,466 - INFO - Preenchimento de ultimo nome com situação cadastral.
+2025-03-12 09:22:06,520 - INFO - Preenchimento de nome da empresa com nome fantasia.
+2025-03-12 09:22:06,560 - INFO - Preenchimento de cargo na empresa com identificador matriz/filial
+2025-03-12 09:22:06,613 - INFO - Preenchimento de endereço
+2025-03-12 09:22:06,667 - INFO - Preenchimento de e-mail
+2025-03-12 09:22:06,707 - INFO - Preenchimento de telefone celular
+2025-03-12 09:22:06,733 - INFO - Click de Submit
+2025-03-12 09:22:06,733 - INFO - Realizando request em Brasil API 
+2025-03-12 09:22:06,881 - INFO - Preenchimento de primeiro nome, com razão social.
+2025-03-12 09:22:06,920 - INFO - Preenchimento de ultimo nome com situação cadastral.
+2025-03-12 09:22:06,960 - INFO - Preenchimento de nome da empresa com nome fantasia.
+2025-03-12 09:22:07,000 - INFO - Preenchimento de cargo na empresa com identificador matriz/filial
+2025-03-12 09:22:07,067 - INFO - Preenchimento de endereço
+2025-03-12 09:22:07,107 - INFO - Preenchimento de e-mail
+2025-03-12 09:22:07,147 - INFO - Preenchimento de telefone celular
+2025-03-12 09:22:07,173 - INFO - Click de Submit
+2025-03-12 09:22:07,173 - INFO - Realizando request em Brasil API 
+2025-03-12 09:22:07,320 - INFO - Preenchimento de primeiro nome, com razão social.
+2025-03-12 09:22:07,360 - INFO - Preenchimento de ultimo nome com situação cadastral.
+2025-03-12 09:22:07,413 - INFO - Preenchimento de nome da empresa com nome fantasia.
+2025-03-12 09:22:07,467 - INFO - Preenchimento de cargo na empresa com identificador matriz/filial
+2025-03-12 09:22:07,520 - INFO - Preenchimento de endereço
+2025-03-12 09:22:07,560 - INFO - Preenchimento de e-mail
+2025-03-12 09:22:07,600 - INFO - Preenchimento de telefone celular
+2025-03-12 09:22:07,640 - INFO - Click de Submit
+2025-03-12 09:22:07,640 - INFO - Realizando request em Brasil API 
+2025-03-12 09:22:07,774 - INFO - Preenchimento de primeiro nome, com razão social.
+2025-03-12 09:22:07,827 - INFO - Preenchimento de ultimo nome com situação cadastral.
+2025-03-12 09:22:07,867 - INFO - Preenchimento de nome da empresa com nome fantasia.
+2025-03-12 09:22:07,920 - INFO - Preenchimento de cargo na empresa com identificador matriz/filial
+2025-03-12 09:22:07,990 - INFO - Preenchimento de endereço
+2025-03-12 09:22:08,027 - INFO - Preenchimento de e-mail
+2025-03-12 09:22:08,080 - INFO - Preenchimento de telefone celular
+2025-03-12 09:22:08,107 - INFO - Click de Submit
+2025-03-12 09:22:08,107 - INFO - Realizando request em Brasil API 
+2025-03-12 09:22:08,245 - INFO - Preenchimento de primeiro nome, com razão social.
+2025-03-12 09:22:08,280 - INFO - Preenchimento de ultimo nome com situação cadastral.
+2025-03-12 09:22:08,334 - INFO - Preenchimento de nome da empresa com nome fantasia.
+2025-03-12 09:22:08,387 - INFO - Preenchimento de cargo na empresa com identificador matriz/filial
+2025-03-12 09:22:08,440 - INFO - Preenchimento de endereço
+2025-03-12 09:22:08,494 - INFO - Preenchimento de e-mail
+2025-03-12 09:22:08,534 - INFO - Preenchimento de telefone celular
+2025-03-12 09:22:08,561 - INFO - Click de Submit
+2025-03-12 09:22:08,561 - INFO - Realizando request em Brasil API 
+2025-03-12 09:22:08,713 - INFO - Preenchimento de primeiro nome, com razão social.
+2025-03-12 09:22:08,747 - INFO - Preenchimento de ultimo nome com situação cadastral.
+2025-03-12 09:22:08,787 - INFO - Preenchimento de nome da empresa com nome fantasia.
+2025-03-12 09:22:08,841 - INFO - Preenchimento de cargo na empresa com identificador matriz/filial
+2025-03-12 09:22:08,898 - INFO - Preenchimento de endereço
+2025-03-12 09:22:08,934 - INFO - Preenchimento de e-mail
+2025-03-12 09:22:08,974 - INFO - Preenchimento de telefone celular
+2025-03-12 09:22:09,014 - INFO - Click de Submit
+2025-03-12 09:22:09,014 - INFO - Realizando request em Brasil API 
+2025-03-12 09:22:09,099 - WARNING - Erro ao consultar o CNPJ 80671425000161: 404 Client Error: Not Found for url: https://brasilapi.com.br/api/cnpj/v1/80671425000161
+2025-03-12 09:22:09,995 - INFO - Abre site dos correios no navegador.
+2025-03-12 09:22:09,995 - INFO - Inicia busca de cotação dos Correios.
+2025-03-12 09:22:10,037 - INFO - Imagem capturada e salva no log do desenvolvedor.
+2025-03-12 09:22:11,189 - INFO - Valor da cotação e prazo de entrega salvos na linha 2
+2025-03-12 09:22:11,481 - INFO - Valor da cotação e prazo de entrega salvos na linha 3
+2025-03-12 09:22:11,481 - WARNING - Valor de Peso ausente na linha 3. Buscar próxima cotação.
+2025-03-12 09:22:12,416 - INFO - Valor da cotação e prazo de entrega salvos na linha 5
+2025-03-12 09:22:13,789 - INFO - Valor da cotação e prazo de entrega salvos na linha 7
+2025-03-12 09:22:14,963 - INFO - Valor da cotação e prazo de entrega salvos na linha 8
+2025-03-12 09:22:16,190 - INFO - Valor da cotação e prazo de entrega salvos na linha 10
+2025-03-12 09:22:17,457 - INFO - Valor da cotação e prazo de entrega salvos na linha 11
+2025-03-12 09:22:18,698 - INFO - Valor da cotação e prazo de entrega salvos na linha 12
+2025-03-12 09:22:18,859 - INFO - Valor da cotação e prazo de entrega salvos na linha 13
+2025-03-12 09:22:18,859 - WARNING - Valor do Pedido ausente na linha 13. Buscar próxima cotação.
+2025-03-12 09:22:18,888 - INFO - Valor da cotação e prazo de entrega salvos na linha 14
+2025-03-12 09:22:18,888 - WARNING - CEP de destino não informado na linha 14. Buscar próxima cotação.
+2025-03-12 09:22:19,898 - INFO - Valor da cotação e prazo de entrega salvos na linha 15
+2025-03-12 09:22:20,054 - INFO - Valor da cotação e prazo de entrega salvos na linha 16
+2025-03-12 09:22:20,055 - WARNING - Dimensões inválidas ou ausentes na linha 16. Buscar próxima cotação.
+2025-03-12 09:22:21,099 - INFO - Valor da cotação e prazo de entrega salvos na linha 17
+2025-03-12 09:22:21,228 - INFO - Finaliza busca de cotação dos Correios.
+2025-03-12 09:22:21,279 - INFO - Imagem capturada e salva no log do desenvolvedor.
+2025-03-12 09:22:21,280 - INFO - Fecha site dos correios no navegador.
+2025-03-12 09:22:23,395 - INFO - Abre site da Jadlog no navegador
+2025-03-12 09:22:25,300 - INFO - Imagem capturada e salva no log do desenvolvedor.
+2025-03-12 09:22:25,320 - INFO - Iniciar cotações no side da transportadora Jadlog
+2025-03-12 09:22:29,754 - INFO - Valor da cotação salvo na linha 2
+2025-03-12 09:22:29,754 - WARNING - Pulando cotação da linha 3. Peso não declarado
+2025-03-12 09:22:34,145 - INFO - Valor da cotação salvo na linha 4
+2025-03-12 09:22:38,515 - INFO - Valor da cotação salvo na linha 5
+2025-03-12 09:22:42,884 - INFO - Valor da cotação salvo na linha 6
+2025-03-12 09:22:47,268 - INFO - Valor da cotação salvo na linha 7
+2025-03-12 09:22:51,628 - INFO - Valor da cotação salvo na linha 8
+2025-03-12 09:22:55,998 - INFO - Valor da cotação salvo na linha 9
+2025-03-12 09:23:00,354 - INFO - Valor da cotação salvo na linha 10
+2025-03-12 09:23:04,725 - INFO - Valor da cotação salvo na linha 11
+2025-03-12 09:23:09,082 - INFO - Valor da cotação salvo na linha 12
+2025-03-12 09:23:09,098 - WARNING - Pulando cotação da linha 13. Valor do pedido não declarado
+2025-03-12 09:23:09,098 - WARNING - Pulando cotação da linha 14. CEP do destino não declarado
+2025-03-12 09:23:13,447 - INFO - Valor da cotação salvo na linha 15
+2025-03-12 09:23:13,447 - WARNING - Pulando cotação da linha 16. Dimensões da caixa não declaradas
+2025-03-12 09:23:17,841 - INFO - Valor da cotação salvo na linha 17
+2025-03-12 09:23:17,841 - INFO - Cotações realizadas com sucesso
+2025-03-12 09:23:17,884 - INFO - Imagem capturada e salva no log do desenvolvedor.
+2025-03-12 09:23:17,914 - INFO - Finalizando execução do bot... Processo Finalizado.
+2025-03-12 09:23:23,895 - INFO - E-mail enviado com sucesso para ghislaine.latorra.pb@compasso.com.br.
+2025-03-12 09:23:25,368 - INFO - E-mail enviado com sucesso para guilherme.sartori.pb@compasso.com.br.
+2025-03-12 09:23:26,957 - INFO - E-mail enviado com sucesso para marcos.eduardo.pb@compasso.com.br.
+2025-03-12 09:23:28,428 - INFO - E-mail enviado com sucesso para eduardo.vargas.pb@compasso.com.br.

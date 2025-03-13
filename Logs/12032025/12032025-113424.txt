@@ -1,0 +1,66 @@
+2025-03-12 11:34:24,764 - INFO - Início da execução do processo.
+2025-03-12 11:34:24,957 - INFO - Planilha de entrada carregada com sucesso.
+2025-03-12 11:34:24,957 - INFO - Preenchendo a planilha de saída com os dados da planilha de entrada...
+2025-03-12 11:34:24,966 - INFO - Planilha de saída preenchida com sucesso!
+2025-03-12 11:34:24,966 - INFO - Verifica campos vazios na planilha de entrada.
+2025-03-12 11:34:24,966 - INFO - Acessando planilha de saída para salvar status.
+2025-03-12 11:34:24,983 - INFO - Status salvo com sucesso na célula Q3
+2025-03-12 11:34:24,984 - INFO - Acessando planilha de saída para salvar status.
+2025-03-12 11:34:25,024 - INFO - Status salvo com sucesso na célula Q13
+2025-03-12 11:34:25,024 - INFO - Acessando planilha de saída para salvar status.
+2025-03-12 11:34:25,044 - INFO - Status salvo com sucesso na célula Q16
+2025-03-12 11:34:25,045 - INFO - Lendo arquivo Excel de entrada
+2025-03-12 11:34:25,058 - INFO - Processando CNPJs e consultando API
+2025-03-12 11:34:25,062 - INFO - Armazenando informações em formato de Dict chave : valor
+2025-03-12 11:34:25,062 - INFO - Realizando request em Brasil API 
+2025-03-12 11:34:25,166 - INFO - Dados do CNPJ 8114089000129 preenchidos com sucesso
+2025-03-12 11:34:25,166 - INFO - Realizando request em Brasil API 
+2025-03-12 11:34:25,240 - INFO - Dados do CNPJ 25144592000146 preenchidos com sucesso
+2025-03-12 11:34:25,240 - INFO - Realizando request em Brasil API 
+2025-03-12 11:34:25,325 - INFO - Dados do CNPJ 2415536000101 preenchidos com sucesso
+2025-03-12 11:34:25,325 - INFO - Realizando request em Brasil API 
+2025-03-12 11:34:25,396 - INFO - Dados do CNPJ 58337668000109 preenchidos com sucesso
+2025-03-12 11:34:25,396 - INFO - Realizando request em Brasil API 
+2025-03-12 11:34:25,487 - INFO - Dados do CNPJ 5378545000150 preenchidos com sucesso
+2025-03-12 11:34:25,487 - INFO - Realizando request em Brasil API 
+2025-03-12 11:34:25,560 - INFO - Dados do CNPJ 17315744000106 preenchidos com sucesso
+2025-03-12 11:34:25,560 - INFO - Realizando request em Brasil API 
+2025-03-12 11:34:25,647 - INFO - Dados do CNPJ 2930089000110 preenchidos com sucesso
+2025-03-12 11:34:25,648 - INFO - Realizando request em Brasil API 
+2025-03-12 11:34:25,737 - INFO - Dados do CNPJ 2287137000102 preenchidos com sucesso
+2025-03-12 11:34:25,737 - INFO - Realizando request em Brasil API 
+2025-03-12 11:34:25,818 - INFO - Dados do CNPJ 7251445000193 preenchidos com sucesso
+2025-03-12 11:34:25,819 - INFO - Realizando request em Brasil API 
+2025-03-12 11:34:25,887 - INFO - Dados do CNPJ 6914095000135 preenchidos com sucesso
+2025-03-12 11:34:25,888 - INFO - Realizando request em Brasil API 
+2025-03-12 11:34:25,958 - INFO - Dados do CNPJ 31078625000108 preenchidos com sucesso
+2025-03-12 11:34:25,959 - INFO - Realizando request em Brasil API 
+2025-03-12 11:34:26,054 - INFO - Dados do CNPJ 43916072000196 preenchidos com sucesso
+2025-03-12 11:34:26,055 - INFO - Realizando request em Brasil API 
+2025-03-12 11:34:26,116 - INFO - Dados do CNPJ 80671425000161 preenchidos com sucesso
+2025-03-12 11:34:26,116 - INFO - Realizando request em Brasil API 
+2025-03-12 11:34:26,193 - INFO - Dados do CNPJ 49802351000105 preenchidos com sucesso
+2025-03-12 11:34:26,194 - INFO - Realizando request em Brasil API 
+2025-03-12 11:34:26,257 - INFO - Dados do CNPJ 32507961000183 preenchidos com sucesso
+2025-03-12 11:34:26,258 - INFO - Realizando request em Brasil API 
+2025-03-12 11:34:26,329 - INFO - Dados do CNPJ 45628701000108 preenchidos com sucesso
+2025-03-12 11:34:26,345 - INFO - Planilha preenchida com sucesso!
+2025-03-12 11:34:30,098 - INFO - Abre site do Rpa Challenge.
+2025-03-12 11:34:30,175 - INFO - Imagem capturada e salva no log do cliente.
+2025-03-12 11:34:30,185 - INFO - Processando CNPJs e consultando API
+2025-03-12 11:34:30,191 - INFO - Realizando request em Brasil API 
+2025-03-12 11:34:30,350 - INFO - Erro inesperado na tarefa Error no preenchimento de dados no RPA Challenges do processo Preenchimento de dados(RPA Challenge). Screenshot salvo em C:\customer_automation_process\Errors\Errors_12032025-1134\Erro - RPA Error no preenchimento de dados no RPA Challenges - 12032025-1134.png.
+2025-03-12 11:34:30,353 - INFO - Inicia busca de cotação dos Correios.
+2025-03-12 11:34:30,395 - INFO - Imagem capturada e salva no log do cliente.
+2025-03-12 11:34:30,420 - INFO - Valor da cotação e prazo de entrega salvos na linha 3
+2025-03-12 11:34:30,420 - WARNING - Valor de Peso ausente na linha 3. Buscar próxima cotação.
+2025-03-12 11:34:30,527 - INFO - Valor da cotação e prazo de entrega salvos na linha 13
+2025-03-12 11:34:30,528 - WARNING - Valor do Pedido ausente na linha 13. Buscar próxima cotação.
+2025-03-12 11:34:30,555 - INFO - Valor da cotação e prazo de entrega salvos na linha 14
+2025-03-12 11:34:30,555 - WARNING - CEP de destino não informado na linha 14. Buscar próxima cotação.
+2025-03-12 11:34:30,583 - INFO - Valor da cotação e prazo de entrega salvos na linha 16
+2025-03-12 11:34:30,583 - WARNING - Dimensões inválidas ou ausentes na linha 16. Buscar próxima cotação.
+2025-03-12 11:34:30,584 - INFO - Finaliza busca de cotação dos Correios.
+2025-03-12 11:34:30,623 - INFO - Imagem capturada e salva no log do cliente.
+2025-03-12 11:34:30,624 - INFO - Fecha site dos correios no navegador.
+2025-03-12 11:34:30,701 - INFO - Erro inesperado na tarefa Erro durante a execução do bot(Execução geral do bot) do processo Execução da automação completa. Screenshot salvo em C:\customer_automation_process\Errors\Errors_12032025-1134\Erro - RPA Erro durante a execução do bot(Execução geral do bot) - 12032025-1134.png.

@@ -1,0 +1,48 @@
+2025-03-07 11:38:38,154 - INFO - Início da execução do processo.
+2025-03-07 11:38:38,209 - INFO - Planilha de entrada carregada com sucesso.
+2025-03-07 11:38:38,209 - INFO - Preenchendo a planilha de saída com os dados da planilha de entrada...
+2025-03-07 11:38:38,217 - INFO - Planilha de saída preenchida com sucesso!
+2025-03-07 11:38:38,218 - INFO - Verifica campos vazios na planilha de entrada.
+2025-03-07 11:38:38,218 - INFO - Acessando planilha de saída para salvar status.
+2025-03-07 11:38:38,239 - INFO - Status salvo com sucesso na célula Q3
+2025-03-07 11:38:38,240 - INFO - Acessando planilha de saída para salvar status.
+2025-03-07 11:38:38,259 - INFO - Status salvo com sucesso na célula Q13
+2025-03-07 11:38:38,260 - INFO - Acessando planilha de saída para salvar status.
+2025-03-07 11:38:38,280 - INFO - Status salvo com sucesso na célula Q16
+2025-03-07 11:38:43,073 - INFO - Imagem capturada e salva no log do cliente.
+2025-03-07 11:38:50,502 - INFO - Abre site dos correios no navegador.
+2025-03-07 11:38:50,502 - INFO - Inicia busca de cotação dos Correios.
+2025-03-07 11:38:50,555 - INFO - Imagem capturada e salva no log do cliente.
+2025-03-07 11:38:51,591 - INFO - Valor da cotação e prazo de entrega salvos na linha 2
+2025-03-07 11:38:51,917 - INFO - Valor da cotação e prazo de entrega salvos na linha 3
+2025-03-07 11:38:51,917 - WARNING - Valor de Peso ausente na linha 3. Buscar próxima cotação.
+2025-03-07 11:38:52,846 - INFO - Valor da cotação e prazo de entrega salvos na linha 5
+2025-03-07 11:38:54,000 - INFO - Valor da cotação e prazo de entrega salvos na linha 7
+2025-03-07 11:38:55,155 - INFO - Valor da cotação e prazo de entrega salvos na linha 8
+2025-03-07 11:38:56,568 - INFO - Valor da cotação e prazo de entrega salvos na linha 10
+2025-03-07 11:38:57,804 - INFO - Valor da cotação e prazo de entrega salvos na linha 11
+2025-03-07 11:38:59,054 - INFO - Valor da cotação e prazo de entrega salvos na linha 12
+2025-03-07 11:38:59,227 - INFO - Valor da cotação e prazo de entrega salvos na linha 13
+2025-03-07 11:38:59,227 - WARNING - Valor do Pedido ausente na linha 13. Buscar próxima cotação.
+2025-03-07 11:38:59,262 - INFO - Valor da cotação e prazo de entrega salvos na linha 14
+2025-03-07 11:38:59,262 - WARNING - CEP de destino não informado na linha 14. Buscar próxima cotação.
+2025-03-07 11:39:00,263 - INFO - Valor da cotação e prazo de entrega salvos na linha 15
+2025-03-07 11:39:00,435 - INFO - Valor da cotação e prazo de entrega salvos na linha 16
+2025-03-07 11:39:00,435 - WARNING - Dimensões inválidas ou ausentes na linha 16. Buscar próxima cotação.
+2025-03-07 11:39:01,454 - INFO - Valor da cotação e prazo de entrega salvos na linha 17
+2025-03-07 11:39:01,590 - INFO - Finaliza busca de cotação dos Correios.
+2025-03-07 11:39:01,640 - INFO - Imagem capturada e salva no log do cliente.
+2025-03-07 11:39:01,641 - INFO - Fecha site dos correios no navegador.
+2025-03-07 11:39:03,909 - INFO - Abre site da Jadlog no navegador
+2025-03-07 11:39:05,883 - INFO - Imagem capturada e salva no log do cliente.
+2025-03-07 11:39:05,901 - INFO - Iniciar cotações no side da transportadora Jadlog
+2025-03-07 11:39:20,490 - INFO - Ocorreu um erro na cotação. Reiniciando cotação Jadlog
+2025-03-07 11:39:20,575 - INFO - Iniciar cotações no side da transportadora Jadlog
+2025-03-07 11:39:25,163 - WARNING - Pulando cotação da linha 3. Peso não declarado
+2025-03-07 11:40:04,966 - WARNING - Pulando cotação da linha 13. Valor do pedido não declarado
+2025-03-07 11:40:04,967 - WARNING - Pulando cotação da linha 14. CEP do destino não declarado
+2025-03-07 11:40:09,384 - WARNING - Pulando cotação da linha 16. Dimensões da caixa não declaradas
+2025-03-07 11:40:13,813 - INFO - Cotações realizadas com sucesso
+2025-03-07 11:40:13,863 - INFO - Imagem capturada e salva no log do cliente.
+2025-03-07 11:40:13,897 - INFO - Finalizando execução do bot...
+2025-03-07 11:40:13,897 - INFO - Processo Finalizado.

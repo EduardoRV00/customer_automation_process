@@ -1,0 +1,15 @@
+2025-03-07 11:38:38,154 - INFO - Processo iniciado pelo bot.
+2025-03-07 11:38:43,073 - INFO - Imagem capturada e salva no log do desenvolvedor.
+2025-03-07 11:38:50,555 - INFO - Imagem capturada e salva no log do desenvolvedor.
+2025-03-07 11:39:01,640 - INFO - Imagem capturada e salva no log do desenvolvedor.
+2025-03-07 11:39:03,909 - INFO - Abre site da Jadlog no navegador
+2025-03-07 11:39:05,883 - INFO - Imagem capturada e salva no log do desenvolvedor.
+2025-03-07 11:39:05,901 - INFO - Iniciar cotações no side da transportadora Jadlog
+2025-03-07 11:39:20,490 - ERROR - 1ª tentativa - Erro ao preencher formulário de cotação: 'NoneType' object has no attribute 'text'
+2025-03-07 11:39:20,575 - INFO - Iniciar cotações no side da transportadora Jadlog
+2025-03-07 11:39:25,163 - WARNING - Pulando cotação da linha 3. Peso não declarado
+2025-03-07 11:40:04,967 - WARNING - Pulando cotação da linha 13. Valor do pedido não declarado
+2025-03-07 11:40:04,967 - WARNING - Pulando cotação da linha 14. CEP do destino não declarado
+2025-03-07 11:40:09,384 - WARNING - Pulando cotação da linha 16. Dimensões da caixa não declaradas
+2025-03-07 11:40:13,814 - INFO - Cotações realizadas com sucesso
+2025-03-07 11:40:13,863 - INFO - Imagem capturada e salva no log do desenvolvedor.
