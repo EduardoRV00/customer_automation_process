@@ -63,12 +63,8 @@ def main():
 
         # Performs quote on the correios website
         open_correios_site(bot, logger_client, logger_dev)
-        msg_quote_correios = "Inicia busca de cotação dos Correios."
-        logger_client.info(msg_quote_correios), logger_dev.info(msg_quote_correios)
         get_screenshots(logger_client, logger_dev)
         processed_output_sheet_quote_correios(bot, output_sheet, logger_client, logger_dev)
-        msg_ends_quote_correios = "Finaliza busca de cotação dos Correios."
-        logger_client.info(msg_ends_quote_correios), logger_dev.info(msg_ends_quote_correios)
         get_screenshots(logger_client, logger_dev)
         msg_close_correois_site = "Fecha site dos correios no navegador."
         logger_client.info(msg_close_correois_site), logger_dev.info(msg_close_correois_site)
